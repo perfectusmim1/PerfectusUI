@@ -4,8 +4,8 @@ local Util = require("Core/Util")
 local Themes = require("Theme/Themes")
 
 local ThemeManager = {
-	CurrentTheme = "Dark",
-	CurrentAccent = "Blue",
+	CurrentTheme = "Obsidian",
+	CurrentAccent = "Indigo",
 	CustomAccentColor = nil,
 	Changed = Signal.new(),
 	_bindings = {}, -- inst -> { prop = token }

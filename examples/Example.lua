@@ -1,257 +1,165 @@
+-- Perfectus UI — Clean, Minimal Showcase Example
 local PerfectusUI = require("init")
 
 local Window = PerfectusUI:CreateWindow({
 	Title = "Perfectus",
-	Subtitle = "by Perfectus",
-	Icon = "sparkles",
-	Theme = "Dark",
-	Accent = "Blue",
-	ConfigFolder = "PerfectusHub/Showcase",
+	Theme = "Obsidian",
+	Accent = "Indigo",
+	Width = 620,
+	Height = 420,
 	ToggleKey = Enum.KeyCode.RightShift,
-	LoadingScreen = true,
+	Watermark = false,
+	ShowKeybindList = false,
+	LoadingScreen = false,
 	SettingsTab = true,
 	AutoLoadConfig = false,
-	Watermark = true,
-	ShowKeybindList = true,
+	ConfigFolder = "PerfectusUI_Showcase",
 })
 
 -- ============================================================
--- Group 1: Overview & Automation
+-- Tab 1: Auto Farm
 -- ============================================================
-Window:TabGroup("Automation")
-
-local DashboardTab = Window:Tab({
-	Title = "Dashboard",
-	Icon = "layout-dashboard",
-	Badge = "NEW",
-})
-
-local TelemetrySec = DashboardTab:Section({ Title = "Live Session Telemetry", Icon = "activity" })
-local StatusStat = TelemetrySec:Stat({
-	Title = "Engine Status",
-	Icon = "shield-check",
-	Value = "Optimal (Zero Idle)",
-	ColorToken = "Success",
-})
-local CoinsStat = TelemetrySec:Stat({
-	Title = "Farming Yield / Min",
-	Icon = "coins",
-	Value = "24,850 / min",
-	ColorToken = "Accent",
-})
-local MasteryProgress = TelemetrySec:ProgressBar({
-	Title = "Season Pass Progression",
-	Icon = "award",
-	Default = 68,
-	Max = 100,
-	Suffix = "%",
-	Tooltip = "Live animated spring progress bar",
-})
-
-TelemetrySec:Button({
-	Title = "Simulate Progression Burst",
+local FarmTab = Window:Tab({
+	Title = "Auto Farm",
 	Icon = "zap",
+})
+
+local MainCard = FarmTab:Section({ Title = "Auto Farm" })
+
+MainCard:Toggle({
+	Title = "Auto Farm",
+	Flag = "AutoFarm",
+	Default = true,
+	Key = Enum.KeyCode.F,
+})
+
+MainCard:Toggle({
+	Title = "Auto Collect",
+	Flag = "AutoCollect",
+	Default = true,
+	Key = Enum.KeyCode.G,
+})
+
+MainCard:Slider({
+	Title = "Attack Interval",
+	Flag = "AttackInterval",
+	Min = 0.01,
+	Max = 1.00,
+	Step = 0.01,
+	Default = 0.05,
+	Suffix = "s",
+})
+
+MainCard:Dropdown({
+	Title = "Target Zone",
+	Flag = "TargetZone",
+	Options = {
+		"Starter Meadow",
+		"Crystal Cavern",
+		"Obsidian Citadel",
+		"Celestial Sanctum",
+		"Abyssal Rift",
+	},
+	Default = "Starter Meadow",
+})
+
+MainCard:Segmented({
+	Title = "Farm Mode",
+	Flag = "FarmMode",
+	Options = { "Legit", "Fast", "Instant" },
+	Default = "Fast",
+})
+
+local ActionsCard = FarmTab:Section({ Title = "Quick Actions", Icon = "sparkles" })
+
+ActionsCard:Button({
+	Title = "Claim All Rewards",
 	Style = "Primary",
-	ButtonText = "Boost +15%",
 	Callback = function()
-		local nextVal = (MasteryProgress:Get() + 15) % 105
-		MasteryProgress:Set(math.min(100, nextVal))
-		CoinsStat:Set(string.format("%d,400 / min", math.random(25, 89)))
 		Window:Notify({
-			Title = "Telemetry Updated",
-			Content = "Progression bar updated to " .. tostring(math.floor(MasteryProgress:Get())) .. "%.",
+			Title = "Rewards Claimed",
+			Content = "Collected all pending chests and daily rewards.",
 			Type = "Success",
 			Duration = 3,
 		})
 	end,
 })
 
-local QuickActionsSec =
-	DashboardTab:Section({ Title = "System Controls & Dialogs", Icon = "command", Collapsible = true })
-
-QuickActionsSec:Button({
-	Title = "Open Spotlight Command Palette",
-	Icon = "search",
-	ButtonText = "Open ⌘K",
-	Tooltip = "Fuzzy search every control across all tabs (or press Ctrl+K)",
-	Callback = function()
-		Window.CommandPalette:Show()
-	end,
-})
-
-QuickActionsSec:Button({
-	Title = "Trigger Modal Confirmation Dialog",
-	Icon = "message-square",
-	ButtonText = "Open Modal",
-	Callback = function()
-		Window:Dialog({
-			Title = "Reset Session Metrics?",
-			Content = "This will reset your session counters and recalibrate the farming rate estimator.",
-			Buttons = {
-				{ Title = "Cancel", Style = "Secondary" },
-				{
-					Title = "Recalibrate",
-					Style = "Primary",
-					Callback = function()
-						CoinsStat:Set("0 / min")
-						MasteryProgress:Set(0)
-						Window:Notify({
-							Title = "Session Reset",
-							Content = "Telemetry counters have been reset.",
-							Type = "Info",
-						})
-					end,
-				},
-			},
-		})
-	end,
-})
-
-QuickActionsSec:Button({
-	Title = "Two-Step Destructive Action",
-	Icon = "alert-triangle",
-	Style = "Destructive",
-	ButtonText = "Purge Cache",
-	Confirm = true,
-	Tooltip = "Requires a second click within 2.5s to confirm",
+ActionsCard:Button({
+	Title = "Reset Session Stats",
 	Callback = function()
 		Window:Notify({
-			Title = "Cache Purged",
-			Content = "Temporary session cache cleared cleanly.",
-			Type = "Warning",
+			Title = "Stats Reset",
+			Content = "Session counters have been cleared.",
+			Type = "Info",
+			Duration = 3,
 		})
 	end,
 })
 
 -- ============================================================
--- Tab 2: Farming & Combat (Interactive Controls)
+-- Tab 2: Combat & Upgrades
 -- ============================================================
-local MainTab = Window:Tab({
-	Title = "Main & Farm",
-	Icon = "sprout",
-})
-
-local AutoSec = MainTab:Section({ Title = "Automated Farming", Icon = "zap" })
-
-AutoSec:Toggle({
-	Title = "Auto Farm Nearest Target",
-	Flag = "AutoFarm",
+local CombatTab = Window:Tab({
+	Title = "Combat",
 	Icon = "swords",
-	Default = true,
-	Key = Enum.KeyCode.F,
-	Tooltip = "Right-click any row for context actions (Reset, Copy Value, Copy Flag)",
-	Callback = function(state)
-		StatusStat:Set(state and "Farming Active" or "Idle")
-	end,
 })
 
-AutoSec:Toggle({
-	Title = "Auto Collect Orbs & Loot",
-	Flag = "AutoCollect",
-	Icon = "sparkles",
-	Default = false,
-	Key = Enum.KeyCode.G,
-})
+local CombatCard = CombatTab:Section({ Title = "Combat" })
 
-AutoSec:Checkbox({
-	Title = "Prioritize Boss Entities",
-	Flag = "PrioritizeBosses",
-	Icon = "crown",
+CombatCard:Checkbox({
+	Title = "Auto Upgrade Equipped",
+	Flag = "AutoUpgrade",
 	Default = true,
 })
 
-AutoSec:Segmented({
-	Title = "Attack Mode",
-	Flag = "AttackMode",
-	Icon = "crosshair",
-	Options = { "Legit", "Fast", "Instant" },
-	Default = "Fast",
-})
-
-AutoSec:Dropdown({
-	Title = "Target World Zone",
-	Flag = "TargetZone",
-	Icon = "map-pin",
-	Options = {
-		"Zone 1 - Sakura Grove",
-		"Zone 2 - Cyber District",
-		"Zone 3 - Obsidian Citadel",
-		"Zone 4 - Astral Sanctum",
-		"Zone 5 - Void Singularity",
-		"Zone 6 - Celestial Spire",
-		"Zone 7 - Chrono Vault",
-		"Zone 8 - Sovereign Throne",
-	},
-	Default = "Zone 2 - Cyber District",
-	Search = true,
-})
-
-AutoSec:Dropdown({
-	Title = "Auto-Upgrade Attributes",
-	Flag = "UpgradeStats",
-	Icon = "trending-up",
+CombatCard:Dropdown({
+	Title = "Rarity Filter",
+	Flag = "RarityFilter",
 	Multi = true,
-	Options = { "Damage", "Critical Chance", "Attack Speed", "Luck Multiplier", "Movement Speed" },
-	Default = { "Damage", "Luck Multiplier" },
+	Options = { "Common", "Rare", "Epic", "Legendary", "Mythic", "Secret" },
+	Default = { "Legendary", "Mythic", "Secret" },
 })
 
-local TuningSec = MainTab:Section({ Title = "Precision Tuning", Icon = "sliders" })
-
-TuningSec:Slider({
-	Title = "Engagement Radius",
-	Flag = "EngageRadius",
-	Icon = "radar",
-	Min = 10,
-	Max = 250,
+CombatCard:RangeSlider({
+	Title = "Target Distance",
+	Flag = "TargetRange",
+	Min = 5,
+	Max = 150,
 	Step = 5,
-	Default = 85,
-	Suffix = " studs",
+	Default = { 15, 85 },
+	Suffix = "m",
 })
 
-TuningSec:RangeSlider({
-	Title = "Reaction Delay Window",
-	Flag = "ReactionWindow",
-	Icon = "clock",
-	Min = 10,
-	Max = 500,
-	Step = 10,
-	Default = { 60, 180 },
-	Suffix = " ms",
-})
-
-TuningSec:Stepper({
-	Title = "Multi-Target Batch Limit",
-	Flag = "BatchLimit",
-	Icon = "layers",
+CombatCard:Stepper({
+	Title = "Burst Count",
+	Flag = "BurstCount",
 	Min = 1,
-	Max = 20,
+	Max = 16,
 	Step = 1,
 	Default = 4,
-	Suffix = " mobs",
+	Suffix = "x",
 })
 
 -- ============================================================
--- Group 2: Character & Visuals
+-- Tab 3: Player
 -- ============================================================
-Window:TabGroup("Character & Visuals")
-
 local PlayerTab = Window:Tab({
 	Title = "Player",
 	Icon = "user",
 })
 
-local MoveSec = PlayerTab:Section({ Title = "Movement & Physics", Icon = "wind" })
+local MoveCard = PlayerTab:Section({ Title = "Player" })
 
-MoveSec:Toggle({
-	Title = "WalkSpeed Override",
+MoveCard:Toggle({
+	Title = "WalkSpeed",
 	Flag = "WalkSpeedToggle",
-	Icon = "footprints",
 	Default = false,
 	Key = Enum.KeyCode.V,
 })
 
-MoveSec:Slider({
-	Title = "WalkSpeed Value",
+MoveCard:Slider({
+	Title = "Speed",
 	Flag = "WalkSpeedVal",
 	Min = 16,
 	Max = 350,
@@ -260,16 +168,15 @@ MoveSec:Slider({
 	Suffix = " ws",
 })
 
-MoveSec:Toggle({
-	Title = "Omnidirectional Flight",
+MoveCard:Toggle({
+	Title = "Flight",
 	Flag = "FlyToggle",
-	Icon = "plane",
 	Default = false,
 	Key = Enum.KeyCode.X,
 })
 
-MoveSec:Slider({
-	Title = "Flight Velocity",
+MoveCard:Slider({
+	Title = "Flight Speed",
 	Flag = "FlySpeedVal",
 	Min = 20,
 	Max = 400,
@@ -278,165 +185,87 @@ MoveSec:Slider({
 	Suffix = " studs/s",
 })
 
-local UtilSec = PlayerTab:Section({ Title = "Player Utilities", Icon = "compass" })
-
-UtilSec:Dropdown({
-	Title = "Spectate / Teleport to Player",
+MoveCard:Dropdown({
+	Title = "Teleport to Player",
 	Flag = "TargetPlayer",
-	Icon = "users",
 	Options = "Players",
 	AllowNone = true,
 })
 
-UtilSec:Keybind({
-	Title = "Quick Dash Hotkey",
-	Flag = "DashKey",
-	Icon = "zap",
-	Default = Enum.KeyCode.Q,
-	Mode = "Hold",
-})
-
+-- ============================================================
+-- Tab 4: Visuals
+-- ============================================================
 local VisualsTab = Window:Tab({
-	Title = "Visuals & ESP",
+	Title = "Visuals",
 	Icon = "eye",
 })
 
-local EspSec = VisualsTab:Section({ Title = "Highlight & ESP Customization", Icon = "palette" })
+local EspCard = VisualsTab:Section({ Title = "Visuals" })
 
-EspSec:Toggle({
-	Title = "Enable Entity Highlights",
+EspCard:Toggle({
+	Title = "ESP Highlights",
 	Flag = "EspEnabled",
-	Icon = "eye",
 	Default = true,
 })
 
-EspSec:ColorPicker({
-	Title = "Ally Highlight Color",
+EspCard:ColorPicker({
+	Title = "Ally Color",
 	Flag = "AllyColor",
-	Icon = "shield",
-	Default = Color3.fromRGB(48, 209, 88),
+	Default = Color3.fromRGB(16, 185, 129),
 })
 
-EspSec:ColorPicker({
-	Title = "Enemy Highlight Color",
+EspCard:ColorPicker({
+	Title = "Enemy Color",
 	Flag = "EnemyColor",
-	Icon = "flame",
-	Default = Color3.fromRGB(255, 69, 58),
+	Default = Color3.fromRGB(244, 63, 94),
 })
 
-EspSec:RadioGroup({
-	Title = "Tracer Origin Mode",
+EspCard:RadioGroup({
+	Title = "Tracer Origin",
 	Flag = "TracerOrigin",
-	Options = { "Screen Bottom", "Screen Center (Crosshair)", "Mouse Cursor" },
-	Default = "Screen Center (Crosshair)",
+	Options = { "Bottom", "Center", "Mouse" },
+	Default = "Center",
 })
 
 -- ============================================================
--- Group 3: Components & Developer Reference
+-- Tab 5: Elements
 -- ============================================================
-Window:TabGroup("Developer")
-
-local ShowcaseTab = Window:Tab({
-	Title = "All Elements",
+local ElementsTab = Window:Tab({
+	Title = "Elements",
 	Icon = "box",
 })
 
-local InputSec = ShowcaseTab:Section({ Title = "Text Inputs & Validation", Icon = "type" })
+local ExtraCard = ElementsTab:Section({ Title = "Elements" })
 
-InputSec:Input({
-	Title = "Webhook Notification URL",
+ExtraCard:Input({
+	Title = "Webhook URL",
 	Flag = "WebhookUrl",
-	Icon = "webhook",
 	Placeholder = "https://discord.com/api/webhooks/...",
 	Finished = true,
 })
 
-InputSec:Input({
-	Title = "Numeric Threshold Filter",
-	Flag = "NumericThreshold",
-	Icon = "hash",
-	Numeric = true,
-	Default = "1500",
+ExtraCard:Keybind({
+	Title = "Dash Hotkey",
+	Flag = "DashKey",
+	Default = Enum.KeyCode.Q,
+	Mode = "Hold",
 })
 
-local LockedDemo = InputSec:Toggle({
-	Title = "Premium Experimental Feature",
-	Icon = "lock",
-	Default = false,
-})
-LockedDemo:Lock("Unlock via toggle below")
-
-InputSec:Toggle({
-	Title = "Unlock Experimental Control Above",
-	Icon = "unlock",
-	Default = false,
-	Callback = function(unlocked)
-		if unlocked then
-			LockedDemo:Unlock()
-		else
-			LockedDemo:Lock("Unlock via toggle below")
-		end
-	end,
+ExtraCard:Stat({
+	Title = "Session Rate",
+	Value = "1,240 / hr",
 })
 
-local RichSec = ShowcaseTab:Section({ Title = "Rich Display Elements", Icon = "code-2" })
-
-RichSec:Label({
-	Title = "Single-column iOS grouped card layout with zero text overlap.",
-	Icon = "check-circle-2",
-})
-
-RichSec:Divider("Documentation & Code")
-
-RichSec:Paragraph({
-	Title = "Architecture Overview",
-	Content = "Every control reserves its exact right-hand slot width and truncates or wraps text cleanly on the left. Popovers render in a dedicated top-level layer that automatically flips upward near screen edges.",
-	Icon = "info",
-})
-
-RichSec:CodeBlock({
-	Title = "Quick Start Usage",
-	Code = [[local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/perfectusmim1/PerfectusUI/main/dist/PerfectusUI.lua"))()
-local Window = UI:CreateWindow({ Title = "Perfectus", Subtitle = "by Perfectus" })
-local Main = Window:Tab({ Title = "Main", Icon = "home" })
-Main:Section("Farming"):Toggle({ Title = "Auto Farm", Flag = "AutoFarm", Key = "F" })]],
-})
-
-local ToastSec = ShowcaseTab:Section({ Title = "Notification Showcase", Icon = "bell" })
-
-ToastSec:Button({
-	Title = "Send Info / Success / Warning / Error Toasts",
-	Icon = "bell-ring",
-	Style = "Primary",
-	ButtonText = "Send All",
-	Callback = function()
-		Window:Notify({
-			Title = "Information",
-			Content = "Spotlight search is available via Ctrl+K.",
-			Type = "Info",
-			Duration = 3.5,
-		})
-		task.wait(0.15)
-		Window:Notify({
-			Title = "Configuration Saved",
-			Content = "Your profile was synced to disk.",
-			Type = "Success",
-			Duration = 4,
-		})
-		task.wait(0.15)
-		Window:Notify({
-			Title = "High Ping Detected",
-			Content = "Server latency exceeded 180ms.",
-			Type = "Warning",
-			Duration = 4.5,
-		})
-	end,
+ExtraCard:ProgressBar({
+	Title = "Wave Progress",
+	Default = 72,
+	Status = "18 / 25",
 })
 
 Window:Ready()
 Window:Notify({
-	Title = "Perfectus UI Ready",
-	Content = "Press RightShift to toggle menu or Ctrl+K for Spotlight search.",
+	Title = "Perfectus Ready",
+	Content = "Press RightShift to toggle menu.",
 	Type = "Success",
-	Duration = 4.5,
+	Duration = 3.5,
 })

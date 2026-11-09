@@ -96,35 +96,48 @@ function Notifications:Notify(opts)
 		Name = "ToastCard",
 		Position = UDim2.fromOffset(self.Corner == "BottomLeft" and -40 or 40, 0),
 		Size = UDim2.new(1, 0, 1, 0),
-		BackgroundTransparency = 0.04,
+		BackgroundTransparency = 0,
 		Text = "",
 		AutoButtonColor = false,
 		ZIndex = 262,
-		ThemeBind = { BackgroundColor3 = "PopoverBg" },
+		ThemeBind = { BackgroundColor3 = "RowBg" },
 		Parent = wrapper,
 	}, {
-		Creator.corner(10),
-		Creator.stroke("InnerStroke", 1, 0.25),
+		Creator.corner(12),
+		Creator.stroke("Outline", 1.2, 0),
 	})
 
 	Shadow.create(card, 16, 0.45, 261)
 
+	local iconBox = Creator.new("Frame", {
+		Name = "IconBox",
+		Position = UDim2.fromOffset(10, 10),
+		Size = UDim2.fromOffset(32, 32),
+		ZIndex = 263,
+		ThemeBind = { BackgroundColor3 = "SectionBg" },
+		Parent = card,
+	}, {
+		Creator.corner(8),
+		Creator.stroke("Outline", 1, 0),
+	})
+
 	Creator.new("ImageLabel", {
 		Name = "Icon",
-		Position = UDim2.fromOffset(12, 11),
-		Size = UDim2.fromOffset(16, 16),
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.new(0.5, 0, 0.5, 0),
+		Size = UDim2.fromOffset(18, 18),
 		Image = Icons.resolve(opts.Icon or cfg.Icon) or "",
-		ZIndex = 263,
+		ZIndex = 264,
 		ThemeBind = { ImageColor3 = cfg.Token },
-		Parent = card,
+		Parent = iconBox,
 	})
 
 	Creator.new("TextLabel", {
 		Name = "Title",
-		Position = UDim2.fromOffset(36, 9),
-		Size = UDim2.new(1, -46, 0, 16),
+		Position = UDim2.fromOffset(50, 9),
+		Size = UDim2.new(1, -60, 0, 18),
 		Font = Enum.Font.BuilderSansBold,
-		TextSize = 13,
+		TextSize = 15,
 		Text = title,
 		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 264,
@@ -135,9 +148,9 @@ function Notifications:Notify(opts)
 	if content ~= "" then
 		Creator.new("TextLabel", {
 			Name = "Body",
-			Position = UDim2.fromOffset(36, 27),
-			Size = UDim2.new(1, -46, 0, math.ceil(bodyBounds.Y) + 2),
-			Font = Enum.Font.BuilderSans,
+			Position = UDim2.fromOffset(50, 27),
+			Size = UDim2.new(1, -60, 0, math.ceil(bodyBounds.Y) + 2),
+			Font = Enum.Font.BuilderSansMedium,
 			TextSize = 12,
 			Text = content,
 			TextWrapped = true,

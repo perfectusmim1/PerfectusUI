@@ -125,14 +125,14 @@ function Popover.open(opts)
 		Name = opts.Name or "PopoverCard",
 		Position = UDim2.fromOffset(math.floor(xPos), math.floor(openUpward and (yPos + 10) or math.max(8, yPos - 6))),
 		Size = UDim2.fromOffset(width, targetHeight),
-		BackgroundTransparency = 0.04,
+		BackgroundTransparency = 0,
 		ClipsDescendants = false,
 		ZIndex = 200,
 		ThemeBind = { BackgroundColor3 = "PopoverBg" },
 		Parent = rootContainer,
 	}, {
-		Creator.corner(10),
-		Creator.stroke("InnerStroke", 1, 0.25),
+		Creator.corner(12),
+		Creator.stroke("Outline", 1.2, 0),
 	})
 
 	Shadow.create(card, 20, 0.45, 199)

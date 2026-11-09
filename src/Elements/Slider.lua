@@ -1,9 +1,8 @@
 local Services = require("Core/Services")
 local Creator = require("Core/Creator")
+local Signal = require("Core/Signal")
 local Util = require("Core/Util")
-local ThemeManager = require("Theme/ThemeManager")
 local Animator = require("Motion/Animator")
-local RowBase = require("Components/RowBase")
 
 local Slider = {}
 
@@ -18,34 +17,70 @@ function Slider.create(section, opts)
 	local suffix = opts.Suffix or ""
 	local rawDefault = tonumber(opts.Default) or minVal
 	local value = Util.round(Util.clamp(rawDefault, minVal, maxVal), step)
+	local title = tostring(opts.Title or "Slider")
 
-	local control = RowBase.create(section, {
-		Title = opts.Title or "Slider",
-		Description = opts.Description,
-		Icon = opts.Icon,
-		Tooltip = opts.Tooltip,
-		Flag = opts.Flag or opts.Id,
-		Default = value,
-		RightWidth = 190,
-		Clickable = false,
+	-- Sleek Bento 2-Deck Slider Card
+	local row = Creator.new("Frame", {
+		Name = "Row_" .. title,
+		Size = UDim2.new(1, 0, 0, 54),
+		BackgroundTransparency = 0,
+		LayoutOrder = section:_nextOrder(),
+		ZIndex = 3,
+		ThemeBind = { BackgroundColor3 = "RowBg" },
+		Parent = section.Container,
+	}, {
+		Creator.corner(10),
+		Creator.stroke("Outline", 1, 0),
+		Creator.padding(8, 12, 10, 12),
 	})
-	control.Kind = "Slider"
 
-	local trackWidth = 122
+	local topRow = Creator.new("Frame", {
+		Name = "TopHeader",
+		Size = UDim2.new(1, 0, 0, 18),
+		BackgroundTransparency = 1,
+		ZIndex = 4,
+		Parent = row,
+	})
 
+	local titleLabel = Creator.new("TextLabel", {
+		Name = "Title",
+		Size = UDim2.new(1, -84, 1, 0),
+		Font = Enum.Font.BuilderSansMedium,
+		TextSize = 14,
+		Text = title,
+		TextTruncate = Enum.TextTruncate.AtEnd,
+		ZIndex = 4,
+		ThemeBind = { TextColor3 = "Text" },
+		Parent = topRow,
+	})
+
+	local valueBox = Creator.new("TextBox", {
+		Name = "ValueBox",
+		AnchorPoint = Vector2.new(1, 0.5),
+		Position = UDim2.new(1, 0, 0.5, 0),
+		Size = UDim2.fromOffset(78, 20),
+		BackgroundTransparency = 1,
+		Font = Enum.Font.BuilderSansBold,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Right,
+		ClearTextOnFocus = false,
+		ZIndex = 5,
+		ThemeBind = { TextColor3 = "ValueText" },
+		Parent = topRow,
+	})
+
+	-- Full-width sleek pill track with Indigo->Cyan gradient fill
 	local track = Creator.new("TextButton", {
 		Name = "SliderTrack",
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(trackWidth, 6),
-		BackgroundColor3 = ThemeManager:Get("ControlBg"),
+		Position = UDim2.new(0, 0, 0, 26),
+		Size = UDim2.new(1, 0, 0, 8),
 		Text = "",
 		AutoButtonColor = false,
 		ZIndex = 6,
-		Parent = control.RightSlot,
+		ThemeBind = { BackgroundColor3 = "ControlBg" },
+		Parent = row,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.4),
 	})
 
 	local fill = Creator.new("Frame", {
@@ -53,45 +88,72 @@ function Slider.create(section, opts)
 		AnchorPoint = Vector2.new(0, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
 		Size = UDim2.new(0, 0, 1, 0),
-		BackgroundColor3 = ThemeManager:Get("Accent"),
+		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		ZIndex = 7,
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
+		Creator.new("UIGradient", {
+			Color = ColorSequence.new({
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(99, 102, 241)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(56, 189, 248)),
+			}),
+		}),
 	})
 
 	local knob = Creator.new("Frame", {
 		Name = "Knob",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(14, 14),
+		Size = UDim2.fromOffset(16, 16),
 		ZIndex = 8,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.stroke(Color3.fromRGB(99, 102, 241), 2, 0),
 	})
 
-	local valueBox = Creator.new("TextBox", {
-		Name = "ValueBox",
-		AnchorPoint = Vector2.new(1, 0.5),
-		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(60, 22),
-		Font = Enum.Font.RobotoMono,
-		TextSize = 12,
-		TextXAlignment = Enum.TextXAlignment.Center,
-		ClearTextOnFocus = false,
-		ZIndex = 6,
-		ThemeBind = {
-			BackgroundColor3 = "InputBg",
-			TextColor3 = "Text",
-		},
-		Parent = control.RightSlot,
-	}, {
-		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.35),
-	})
+	local locked = false
+	local control = {
+		Kind = "Slider",
+		Row = row,
+		TitleLabel = titleLabel,
+		Section = section,
+		Window = section.Window,
+		Flag = opts.Flag or opts.Id,
+		Title = title,
+		Default = value,
+		Changed = Signal.new(),
+		IsLocked = function()
+			return locked
+		end,
+		Lock = function()
+			locked = true
+		end,
+		Unlock = function()
+			locked = false
+		end,
+		Highlight = function()
+			Animator.pulseHighlight(row)
+		end,
+		SetTitle = function(self, t)
+			self.Title = tostring(t or "")
+			titleLabel.Text = self.Title
+		end,
+		SetVisible = function(_, v)
+			row.Visible = v == true
+		end,
+		OnChanged = function(self, fn)
+			return self.Changed:Connect(fn)
+		end,
+		Destroy = function(self)
+			self.Changed:Destroy()
+			if row and row.Parent then
+				row:Destroy()
+			end
+		end,
+	}
 
 	local function getRatio(val)
 		if maxVal == minVal then
@@ -102,8 +164,6 @@ function Slider.create(section, opts)
 
 	local function syncVisuals(animate)
 		local ratio = getRatio(value)
-		fill.BackgroundColor3 = ThemeManager:Get("Accent")
-
 		if animate ~= false then
 			Animator.spring(fill, "Size", UDim2.new(ratio, 0, 1, 0), { frequency = 24, damping = 0.85 })
 			Animator.spring(knob, "Position", UDim2.new(ratio, 0, 0.5, 0), { frequency = 24, damping = 0.85 })
@@ -115,10 +175,6 @@ function Slider.create(section, opts)
 			valueBox.Text = tostring(value) .. suffix
 		end
 	end
-
-	ThemeManager.Changed:Connect(function()
-		syncVisuals(true)
-	end)
 
 	local function setValue(newVal, silent)
 		newVal = tonumber(newVal) or minVal
@@ -161,11 +217,11 @@ function Slider.create(section, opts)
 	end
 
 	local function startDragging(input)
-		if control:IsLocked() then
+		if locked then
 			return
 		end
 		dragging = true
-		Animator.spring(knob, "Size", UDim2.fromOffset(17, 17), { frequency = 22, damping = 0.82 })
+		Animator.spring(knob, "Size", UDim2.fromOffset(19, 19), { frequency = 22, damping = 0.82 })
 		updateFromInput(input)
 
 		if moveConn then
@@ -193,7 +249,7 @@ function Slider.create(section, opts)
 				or endInput.UserInputType == Enum.UserInputType.Touch
 			then
 				dragging = false
-				Animator.spring(knob, "Size", UDim2.fromOffset(14, 14), { frequency = 20, damping = 0.85 })
+				Animator.spring(knob, "Size", UDim2.fromOffset(16, 16), { frequency = 20, damping = 0.85 })
 				if moveConn then
 					moveConn:Disconnect()
 					moveConn = nil
@@ -241,6 +297,15 @@ function Slider.create(section, opts)
 	function control:SetMax(newMax)
 		maxVal = tonumber(newMax) or maxVal
 		setValue(value, true)
+	end
+
+	if section.Window then
+		if section.Window._registerContextMenu then
+			section.Window:_registerContextMenu(row, control)
+		end
+		if section.Window._registerSearchable then
+			section.Window:_registerSearchable(control, section)
+		end
 	end
 
 	if control.Flag and control.Window and control.Window.Flags then

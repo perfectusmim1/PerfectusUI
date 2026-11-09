@@ -242,162 +242,150 @@ __modules["Theme/Themes"] = function(require)
 local Themes = {}
 
 Themes.Accents = {
-	Blue = Color3.fromRGB(10, 132, 255),
-	Purple = Color3.fromRGB(191, 90, 242),
-	Pink = Color3.fromRGB(255, 55, 95),
-	Red = Color3.fromRGB(255, 69, 58),
-	Orange = Color3.fromRGB(255, 159, 10),
-	Yellow = Color3.fromRGB(255, 214, 10),
-	Green = Color3.fromRGB(48, 209, 88),
-	Graphite = Color3.fromRGB(142, 142, 147),
+	Indigo = Color3.fromRGB(99, 102, 241),
+	Cyan = Color3.fromRGB(56, 189, 248),
+	Violet = Color3.fromRGB(168, 85, 247),
+	Emerald = Color3.fromRGB(16, 185, 129),
+	Rose = Color3.fromRGB(244, 63, 94),
+	Amber = Color3.fromRGB(245, 158, 11),
+	Blue = Color3.fromRGB(59, 130, 246),
 }
 
-Themes.AccentOrder = { "Blue", "Purple", "Pink", "Red", "Orange", "Yellow", "Green", "Graphite" }
+Themes.AccentOrder = { "Indigo", "Cyan", "Violet", "Emerald", "Rose", "Amber", "Blue" }
 
 Themes.Palettes = {
-	Dark = {
-		Name = "Dark",
+	Obsidian = {
+		Name = "Obsidian",
 		IsDark = true,
-		WindowBg = Color3.fromRGB(22, 22, 25),
-		SidebarBg = Color3.fromRGB(18, 18, 21),
-		TitleBarBg = Color3.fromRGB(24, 24, 28),
-		ContentBg = Color3.fromRGB(15, 15, 18),
-		SectionBg = Color3.fromRGB(28, 28, 32),
-		SectionHeader = Color3.fromRGB(142, 142, 149),
-		RowBg = Color3.fromRGB(28, 28, 32),
-		RowHover = Color3.fromRGB(36, 36, 42),
-		RowPress = Color3.fromRGB(42, 42, 49),
-		ControlBg = Color3.fromRGB(40, 40, 46),
-		ControlHover = Color3.fromRGB(50, 50, 58),
-		ControlActive = Color3.fromRGB(60, 60, 70),
-		InputBg = Color3.fromRGB(20, 20, 24),
-		PopoverBg = Color3.fromRGB(30, 30, 35),
-		Border = Color3.fromRGB(46, 46, 54),
-		InnerStroke = Color3.fromRGB(68, 68, 78),
-		Divider = Color3.fromRGB(40, 40, 47),
-		Text = Color3.fromRGB(245, 245, 247),
-		TextSecondary = Color3.fromRGB(158, 158, 168),
-		TextMuted = Color3.fromRGB(108, 108, 118),
+		WindowBg = Color3.fromRGB(13, 15, 22),
+		SidebarBg = Color3.fromRGB(19, 22, 32),
+		SidebarCardActive = Color3.fromRGB(34, 40, 58),
+		SidebarCardInactive = Color3.fromRGB(19, 22, 32),
+		SidebarIconActive = Color3.fromRGB(129, 140, 248),
+		SidebarIconInactive = Color3.fromRGB(116, 126, 152),
+		TitleBarBg = Color3.fromRGB(19, 22, 32),
+		TitleText = Color3.fromRGB(244, 246, 255),
+		ContentBg = Color3.fromRGB(13, 15, 22),
+		SectionBg = Color3.fromRGB(19, 22, 32),
+		SectionHeader = Color3.fromRGB(148, 160, 190),
+		RowBg = Color3.fromRGB(25, 29, 42),
+		RowHover = Color3.fromRGB(31, 36, 52),
+		RowPress = Color3.fromRGB(22, 26, 38),
+		ControlBg = Color3.fromRGB(32, 38, 54),
+		ControlHover = Color3.fromRGB(40, 47, 66),
+		ControlActive = Color3.fromRGB(50, 58, 80),
+		InputBg = Color3.fromRGB(17, 20, 29),
+		PopoverBg = Color3.fromRGB(22, 26, 38),
+		Outline = Color3.fromRGB(38, 45, 64),
+		Border = Color3.fromRGB(38, 45, 64),
+		InnerStroke = Color3.fromRGB(52, 62, 88),
+		Divider = Color3.fromRGB(34, 40, 56),
+		Text = Color3.fromRGB(242, 245, 252),
+		TextSecondary = Color3.fromRGB(148, 158, 184),
+		TextMuted = Color3.fromRGB(98, 108, 134),
+		ValueText = Color3.fromRGB(129, 140, 248),
 		OnAccent = Color3.fromRGB(255, 255, 255),
-		SwitchOff = Color3.fromRGB(56, 56, 64),
+		SwitchOff = Color3.fromRGB(40, 47, 66),
 		Knob = Color3.fromRGB(255, 255, 255),
 		Shadow = Color3.fromRGB(0, 0, 0),
-		Success = Color3.fromRGB(48, 209, 88),
-		Warning = Color3.fromRGB(255, 159, 10),
-		Error = Color3.fromRGB(255, 69, 58),
-		Info = Color3.fromRGB(10, 132, 255),
-		TrafficClose = Color3.fromRGB(255, 95, 87),
-		TrafficMin = Color3.fromRGB(254, 188, 46),
-		TrafficMax = Color3.fromRGB(40, 200, 64),
+		Success = Color3.fromRGB(16, 185, 129),
+		Warning = Color3.fromRGB(245, 158, 11),
+		Error = Color3.fromRGB(244, 63, 94),
+		Info = Color3.fromRGB(99, 102, 241),
+		TrafficClose = Color3.fromRGB(244, 63, 94),
+		TrafficMin = Color3.fromRGB(245, 158, 11),
+		TrafficMax = Color3.fromRGB(16, 185, 129),
 	},
 	Midnight = {
 		Name = "Midnight",
 		IsDark = true,
-		WindowBg = Color3.fromRGB(10, 10, 12),
-		SidebarBg = Color3.fromRGB(7, 7, 9),
-		TitleBarBg = Color3.fromRGB(12, 12, 15),
-		ContentBg = Color3.fromRGB(5, 5, 7),
-		SectionBg = Color3.fromRGB(16, 16, 20),
-		SectionHeader = Color3.fromRGB(130, 130, 140),
-		RowBg = Color3.fromRGB(16, 16, 20),
-		RowHover = Color3.fromRGB(24, 24, 30),
-		RowPress = Color3.fromRGB(30, 30, 38),
-		ControlBg = Color3.fromRGB(26, 26, 32),
-		ControlHover = Color3.fromRGB(34, 34, 42),
-		ControlActive = Color3.fromRGB(44, 44, 54),
-		InputBg = Color3.fromRGB(10, 10, 13),
-		PopoverBg = Color3.fromRGB(18, 18, 23),
-		Border = Color3.fromRGB(32, 32, 40),
-		InnerStroke = Color3.fromRGB(48, 48, 58),
-		Divider = Color3.fromRGB(26, 26, 33),
-		Text = Color3.fromRGB(248, 248, 252),
-		TextSecondary = Color3.fromRGB(150, 150, 162),
-		TextMuted = Color3.fromRGB(96, 96, 108),
+		WindowBg = Color3.fromRGB(9, 10, 15),
+		SidebarBg = Color3.fromRGB(14, 16, 24),
+		SidebarCardActive = Color3.fromRGB(28, 32, 48),
+		SidebarCardInactive = Color3.fromRGB(14, 16, 24),
+		SidebarIconActive = Color3.fromRGB(56, 189, 248),
+		SidebarIconInactive = Color3.fromRGB(104, 114, 140),
+		TitleBarBg = Color3.fromRGB(14, 16, 24),
+		TitleText = Color3.fromRGB(244, 247, 255),
+		ContentBg = Color3.fromRGB(9, 10, 15),
+		SectionBg = Color3.fromRGB(14, 16, 24),
+		SectionHeader = Color3.fromRGB(134, 146, 176),
+		RowBg = Color3.fromRGB(20, 23, 34),
+		RowHover = Color3.fromRGB(26, 30, 44),
+		RowPress = Color3.fromRGB(18, 20, 30),
+		ControlBg = Color3.fromRGB(26, 30, 44),
+		ControlHover = Color3.fromRGB(34, 39, 56),
+		ControlActive = Color3.fromRGB(42, 48, 68),
+		InputBg = Color3.fromRGB(12, 14, 21),
+		PopoverBg = Color3.fromRGB(18, 21, 32),
+		Outline = Color3.fromRGB(30, 36, 52),
+		Border = Color3.fromRGB(30, 36, 52),
+		InnerStroke = Color3.fromRGB(44, 52, 74),
+		Divider = Color3.fromRGB(26, 31, 45),
+		Text = Color3.fromRGB(242, 245, 252),
+		TextSecondary = Color3.fromRGB(140, 150, 176),
+		TextMuted = Color3.fromRGB(90, 100, 124),
+		ValueText = Color3.fromRGB(56, 189, 248),
 		OnAccent = Color3.fromRGB(255, 255, 255),
-		SwitchOff = Color3.fromRGB(42, 42, 50),
+		SwitchOff = Color3.fromRGB(34, 40, 56),
 		Knob = Color3.fromRGB(255, 255, 255),
 		Shadow = Color3.fromRGB(0, 0, 0),
-		Success = Color3.fromRGB(48, 209, 88),
-		Warning = Color3.fromRGB(255, 159, 10),
-		Error = Color3.fromRGB(255, 69, 58),
-		Info = Color3.fromRGB(10, 132, 255),
-		TrafficClose = Color3.fromRGB(255, 95, 87),
-		TrafficMin = Color3.fromRGB(254, 188, 46),
-		TrafficMax = Color3.fromRGB(40, 200, 64),
-	},
-	Graphite = {
-		Name = "Graphite",
-		IsDark = true,
-		WindowBg = Color3.fromRGB(30, 32, 36),
-		SidebarBg = Color3.fromRGB(25, 27, 31),
-		TitleBarBg = Color3.fromRGB(32, 34, 39),
-		ContentBg = Color3.fromRGB(22, 24, 28),
-		SectionBg = Color3.fromRGB(36, 39, 44),
-		SectionHeader = Color3.fromRGB(152, 156, 166),
-		RowBg = Color3.fromRGB(36, 39, 44),
-		RowHover = Color3.fromRGB(44, 48, 54),
-		RowPress = Color3.fromRGB(52, 56, 63),
-		ControlBg = Color3.fromRGB(50, 54, 61),
-		ControlHover = Color3.fromRGB(60, 64, 72),
-		ControlActive = Color3.fromRGB(70, 75, 84),
-		InputBg = Color3.fromRGB(26, 28, 32),
-		PopoverBg = Color3.fromRGB(38, 41, 47),
-		Border = Color3.fromRGB(56, 60, 68),
-		InnerStroke = Color3.fromRGB(76, 80, 90),
-		Divider = Color3.fromRGB(48, 52, 59),
-		Text = Color3.fromRGB(242, 244, 248),
-		TextSecondary = Color3.fromRGB(166, 170, 180),
-		TextMuted = Color3.fromRGB(118, 122, 132),
-		OnAccent = Color3.fromRGB(255, 255, 255),
-		SwitchOff = Color3.fromRGB(64, 68, 76),
-		Knob = Color3.fromRGB(255, 255, 255),
-		Shadow = Color3.fromRGB(0, 0, 0),
-		Success = Color3.fromRGB(48, 209, 88),
-		Warning = Color3.fromRGB(255, 159, 10),
-		Error = Color3.fromRGB(255, 69, 58),
-		Info = Color3.fromRGB(10, 132, 255),
-		TrafficClose = Color3.fromRGB(255, 95, 87),
-		TrafficMin = Color3.fromRGB(254, 188, 46),
-		TrafficMax = Color3.fromRGB(40, 200, 64),
+		Success = Color3.fromRGB(16, 185, 129),
+		Warning = Color3.fromRGB(245, 158, 11),
+		Error = Color3.fromRGB(244, 63, 94),
+		Info = Color3.fromRGB(56, 189, 248),
+		TrafficClose = Color3.fromRGB(244, 63, 94),
+		TrafficMin = Color3.fromRGB(245, 158, 11),
+		TrafficMax = Color3.fromRGB(16, 185, 129),
 	},
 	Light = {
 		Name = "Light",
 		IsDark = false,
-		WindowBg = Color3.fromRGB(245, 245, 247),
-		SidebarBg = Color3.fromRGB(235, 235, 240),
-		TitleBarBg = Color3.fromRGB(242, 242, 246),
-		ContentBg = Color3.fromRGB(238, 238, 243),
+		WindowBg = Color3.fromRGB(243, 245, 250),
+		SidebarBg = Color3.fromRGB(255, 255, 255),
+		SidebarCardActive = Color3.fromRGB(235, 238, 252),
+		SidebarCardInactive = Color3.fromRGB(255, 255, 255),
+		SidebarIconActive = Color3.fromRGB(79, 70, 229),
+		SidebarIconInactive = Color3.fromRGB(124, 134, 158),
+		TitleBarBg = Color3.fromRGB(255, 255, 255),
+		TitleText = Color3.fromRGB(20, 24, 36),
+		ContentBg = Color3.fromRGB(243, 245, 250),
 		SectionBg = Color3.fromRGB(255, 255, 255),
-		SectionHeader = Color3.fromRGB(110, 110, 118),
-		RowBg = Color3.fromRGB(255, 255, 255),
-		RowHover = Color3.fromRGB(246, 246, 250),
-		RowPress = Color3.fromRGB(238, 238, 244),
-		ControlBg = Color3.fromRGB(229, 229, 235),
-		ControlHover = Color3.fromRGB(218, 218, 226),
-		ControlActive = Color3.fromRGB(206, 206, 216),
-		InputBg = Color3.fromRGB(242, 242, 247),
-		PopoverBg = Color3.fromRGB(252, 252, 255),
-		Border = Color3.fromRGB(214, 214, 222),
-		InnerStroke = Color3.fromRGB(255, 255, 255),
-		Divider = Color3.fromRGB(226, 226, 234),
-		Text = Color3.fromRGB(24, 24, 28),
-		TextSecondary = Color3.fromRGB(98, 98, 108),
-		TextMuted = Color3.fromRGB(142, 142, 152),
+		SectionHeader = Color3.fromRGB(100, 110, 136),
+		RowBg = Color3.fromRGB(247, 249, 253),
+		RowHover = Color3.fromRGB(240, 243, 250),
+		RowPress = Color3.fromRGB(232, 236, 246),
+		ControlBg = Color3.fromRGB(232, 236, 245),
+		ControlHover = Color3.fromRGB(222, 227, 238),
+		ControlActive = Color3.fromRGB(210, 216, 230),
+		InputBg = Color3.fromRGB(242, 244, 250),
+		PopoverBg = Color3.fromRGB(255, 255, 255),
+		Outline = Color3.fromRGB(218, 224, 236),
+		Border = Color3.fromRGB(218, 224, 236),
+		InnerStroke = Color3.fromRGB(204, 212, 228),
+		Divider = Color3.fromRGB(226, 231, 242),
+		Text = Color3.fromRGB(22, 26, 38),
+		TextSecondary = Color3.fromRGB(96, 106, 130),
+		TextMuted = Color3.fromRGB(140, 148, 170),
+		ValueText = Color3.fromRGB(79, 70, 229),
 		OnAccent = Color3.fromRGB(255, 255, 255),
-		SwitchOff = Color3.fromRGB(209, 209, 216),
+		SwitchOff = Color3.fromRGB(212, 218, 230),
 		Knob = Color3.fromRGB(255, 255, 255),
-		Shadow = Color3.fromRGB(30, 30, 40),
-		Success = Color3.fromRGB(40, 185, 76),
-		Warning = Color3.fromRGB(230, 136, 0),
-		Error = Color3.fromRGB(235, 54, 45),
-		Info = Color3.fromRGB(0, 112, 245),
-		TrafficClose = Color3.fromRGB(255, 95, 87),
-		TrafficMin = Color3.fromRGB(254, 188, 46),
-		TrafficMax = Color3.fromRGB(40, 200, 64),
+		Shadow = Color3.fromRGB(20, 26, 44),
+		Success = Color3.fromRGB(16, 185, 129),
+		Warning = Color3.fromRGB(234, 138, 0),
+		Error = Color3.fromRGB(225, 29, 72),
+		Info = Color3.fromRGB(79, 70, 229),
+		TrafficClose = Color3.fromRGB(225, 29, 72),
+		TrafficMin = Color3.fromRGB(245, 158, 11),
+		TrafficMax = Color3.fromRGB(16, 185, 129),
 	},
 }
 
-Themes.ThemeOrder = { "Dark", "Midnight", "Graphite", "Light" }
+Themes.Palettes.Dark = Themes.Palettes.Obsidian
+Themes.Palettes.Graphite = Themes.Palettes.Midnight
+Themes.Palettes.Cream = Themes.Palettes.Light
+Themes.ThemeOrder = { "Obsidian", "Midnight", "Light" }
 
 return Themes
 end
@@ -690,8 +678,8 @@ local Util = require("Core/Util")
 local Themes = require("Theme/Themes")
 
 local ThemeManager = {
-	CurrentTheme = "Dark",
-	CurrentAccent = "Blue",
+	CurrentTheme = "Obsidian",
+	CurrentAccent = "Indigo",
 	CustomAccentColor = nil,
 	Changed = Signal.new(),
 	_bindings = {}, -- inst -> { prop = token }
@@ -2441,14 +2429,14 @@ function Popover.open(opts)
 		Name = opts.Name or "PopoverCard",
 		Position = UDim2.fromOffset(math.floor(xPos), math.floor(openUpward and (yPos + 10) or math.max(8, yPos - 6))),
 		Size = UDim2.fromOffset(width, targetHeight),
-		BackgroundTransparency = 0.04,
+		BackgroundTransparency = 0,
 		ClipsDescendants = false,
 		ZIndex = 200,
 		ThemeBind = { BackgroundColor3 = "PopoverBg" },
 		Parent = rootContainer,
 	}, {
-		Creator.corner(10),
-		Creator.stroke("InnerStroke", 1, 0.25),
+		Creator.corner(12),
+		Creator.stroke("Outline", 1.2, 0),
 	})
 
 	Shadow.create(card, 20, 0.45, 199)
@@ -2521,7 +2509,6 @@ end
 __modules["Window/TitleBar"] = function(require)
 local Services = require("Core/Services")
 local Creator = require("Core/Creator")
-local Util = require("Core/Util")
 local ThemeManager = require("Theme/ThemeManager")
 local Animator = require("Motion/Animator")
 local Icons = require("Assets/Icons")
@@ -2532,152 +2519,95 @@ local TitleBar = {}
 function TitleBar.create(window, opts)
 	opts = opts or {}
 
+	-- Floating Top Header Island (inset 10px from top/left/right)
 	local bar = Creator.new("Frame", {
 		Name = "TitleBar",
-		Size = UDim2.new(1, 0, 0, 44),
+		Position = UDim2.fromOffset(10, 10),
+		Size = UDim2.new(1, -20, 0, 44),
 		BackgroundTransparency = 0,
+		Active = true,
 		ZIndex = 10,
 		ThemeBind = { BackgroundColor3 = "TitleBarBg" },
 		Parent = window.Chrome,
 	}, {
-		Creator.new("Frame", {
-			Name = "BottomBorder",
-			AnchorPoint = Vector2.new(0, 1),
-			Position = UDim2.new(0, 0, 1, 0),
-			Size = UDim2.new(1, 0, 0, 1),
-			ZIndex = 11,
-			ThemeBind = { BackgroundColor3 = "Border" },
+		Creator.corner(12),
+		Creator.stroke("Outline", 1.2, 0),
+	})
+
+	-- Signature Gradient Brand Prism Badge ("P")
+	local badge = Creator.new("Frame", {
+		Name = "BrandBadge",
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 10, 0.5, 0),
+		Size = UDim2.fromOffset(26, 26),
+		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+		ZIndex = 12,
+		Parent = bar,
+	}, {
+		Creator.corner(8),
+		Creator.new("UIGradient", {
+			Color = ColorSequence.new({
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(99, 102, 241)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(56, 189, 248)),
+			}),
+			Rotation = 45,
+		}),
+		Creator.new("TextLabel", {
+			Size = UDim2.new(1, 0, 1, 0),
+			Font = Enum.Font.BuilderSansExtraBold,
+			TextSize = 15,
+			Text = "P",
+			TextColor3 = Color3.fromRGB(255, 255, 255),
+			TextXAlignment = Enum.TextXAlignment.Center,
+			TextYAlignment = Enum.TextYAlignment.Center,
+			ZIndex = 13,
 		}),
 	})
 
-	-- macOS Traffic Lights container (Red = Close, Yellow = Minimize to Dynamic Island pill, Green = Collapse Sidebar)
-	local trafficHolder = Creator.new("Frame", {
-		Name = "TrafficLights",
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 16, 0.5, 0),
-		Size = UDim2.fromOffset(56, 16),
-		BackgroundTransparency = 1,
-		ZIndex = 12,
-		Parent = bar,
-	})
-
-	local glyphs = {}
-
-	local function makeTrafficDot(name, xOffset, colorToken, glyphText, onClick)
-		local btn = Creator.new("TextButton", {
-			Name = name,
-			AnchorPoint = Vector2.new(0, 0.5),
-			Position = UDim2.new(0, xOffset, 0.5, 0),
-			Size = UDim2.fromOffset(12, 12),
-			Text = "",
-			ZIndex = 13,
-			ThemeBind = { BackgroundColor3 = colorToken },
-			Parent = trafficHolder,
-		}, {
-			Creator.corner(UDim.new(1, 0)),
-			Creator.stroke("Border", 1, 0.65),
-		})
-
-		local glyph = Creator.new("TextLabel", {
-			Name = "Glyph",
-			Size = UDim2.new(1, 0, 1, -1),
-			Font = Enum.Font.BuilderSansBold,
-			TextSize = 10,
-			Text = glyphText,
-			TextColor3 = Color3.fromRGB(30, 30, 34),
-			TextTransparency = 1,
-			TextXAlignment = Enum.TextXAlignment.Center,
-			TextYAlignment = Enum.TextYAlignment.Center,
-			ZIndex = 14,
-			Parent = btn,
-		})
-		glyphs[#glyphs + 1] = glyph
-
-		btn.Activated:Connect(onClick)
-		return btn
-	end
-
-	makeTrafficDot("Close", 0, "TrafficClose", "×", function()
-		window:PromptClose()
-	end)
-
-	makeTrafficDot("Minimize", 20, "TrafficMin", "−", function()
-		window:MinimizeToPill(true)
-	end)
-
-	makeTrafficDot("SidebarToggle", 40, "TrafficMax", "⇄", function()
-		window:ToggleSidebar()
-	end)
-
-	trafficHolder.MouseEnter:Connect(function()
-		for _, g in ipairs(glyphs) do
-			Animator.tween(g, { TextTransparency = 0.15 }, 0.12)
-		end
-	end)
-
-	trafficHolder.MouseLeave:Connect(function()
-		for _, g in ipairs(glyphs) do
-			Animator.tween(g, { TextTransparency = 1 }, 0.14)
-		end
-	end)
-
-	-- Brand Icon + Title + Subtitle
-	local titleCluster = Creator.new("Frame", {
-		Name = "TitleCluster",
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 84, 0.5, 0),
-		Size = UDim2.new(1, -240, 0, 26),
-		BackgroundTransparency = 1,
-		ZIndex = 11,
-		Parent = bar,
-	}, {
-		Creator.list(8, Enum.FillDirection.Horizontal, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Center),
-	})
-
-	if opts.Icon then
-		Creator.new("ImageLabel", {
-			Name = "BrandIcon",
-			Size = UDim2.fromOffset(16, 16),
-			Image = Icons.resolve(opts.Icon) or "",
-			LayoutOrder = 1,
-			ZIndex = 12,
-			ThemeBind = { ImageColor3 = "Accent" },
-			Parent = titleCluster,
-		})
-	end
-
 	local titleLabel = Creator.new("TextLabel", {
 		Name = "Title",
-		Size = UDim2.fromOffset(0, 20),
-		AutomaticSize = Enum.AutomaticSize.X,
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 44, 0.5, 0),
+		Size = UDim2.fromOffset(105, 22),
+		Font = Enum.Font.BuilderSansBold,
+		TextSize = 15,
+		Text = tostring(opts.Title or "Perfectus"),
+		TextTruncate = Enum.TextTruncate.AtEnd,
+		ZIndex = 12,
+		ThemeBind = { TextColor3 = "TitleText" },
+		Parent = bar,
+	})
+
+	-- Subtle vertical separator + Active Tab breadcrumb pill
+	local sep = Creator.new("Frame", {
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 122, 0.5, 0),
+		Size = UDim2.fromOffset(1, 16),
+		ZIndex = 12,
+		ThemeBind = { BackgroundColor3 = "Divider" },
+		Parent = bar,
+	})
+
+	local activeTabLabel = Creator.new("TextLabel", {
+		Name = "ActiveTabTitle",
+		AnchorPoint = Vector2.new(0, 0.5),
+		Position = UDim2.new(0, 134, 0.5, 0),
+		Size = UDim2.fromOffset(140, 20),
 		Font = Enum.Font.BuilderSansBold,
 		TextSize = 14,
-		Text = tostring(opts.Title or "Perfectus"),
-		LayoutOrder = 2,
+		Text = "",
+		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 12,
-		ThemeBind = { TextColor3 = "Text" },
-		Parent = titleCluster,
+		ThemeBind = { TextColor3 = "ValueText" },
+		Parent = bar,
 	})
 
-	local subtitleLabel = Creator.new("TextLabel", {
-		Name = "Subtitle",
-		Size = UDim2.fromOffset(0, 18),
-		AutomaticSize = Enum.AutomaticSize.X,
-		Font = Enum.Font.BuilderSans,
-		TextSize = 12,
-		Text = tostring(opts.Subtitle or opts.SubTitle or "by Perfectus"),
-		LayoutOrder = 3,
-		ZIndex = 12,
-		ThemeBind = { TextColor3 = "TextMuted" },
-		Parent = titleCluster,
-	})
-
-	-- Right-side Spotlight Command Palette pill + Menu Key indicator
-	local rightActions = Creator.new("Frame", {
+	-- Right Cluster: Compact Inline Search Box + Theme Toggle + Minimize + Close
+	local rightCluster = Creator.new("Frame", {
 		Name = "RightActions",
 		AnchorPoint = Vector2.new(1, 0.5),
-		Position = UDim2.new(1, -12, 0.5, 0),
-		Size = UDim2.fromOffset(150, 26),
+		Position = UDim2.new(1, -8, 0.5, 0),
+		Size = UDim2.fromOffset(256, 28),
 		BackgroundTransparency = 1,
 		ZIndex = 12,
 		Parent = bar,
@@ -2685,75 +2615,111 @@ function TitleBar.create(window, opts)
 		Creator.list(6, Enum.FillDirection.Horizontal, Enum.HorizontalAlignment.Right, Enum.VerticalAlignment.Center),
 	})
 
-	local searchBtn = Creator.new("TextButton", {
-		Name = "SpotlightBtn",
-		Size = UDim2.fromOffset(92, 24),
+	-- Inline Search Pill
+	local searchWrap = Creator.new("Frame", {
+		Name = "SearchPill",
+		Size = UDim2.fromOffset(152, 28),
 		LayoutOrder = 1,
 		ZIndex = 13,
-		ThemeBind = { BackgroundColor3 = "ControlBg" },
-		Parent = rightActions,
+		ThemeBind = { BackgroundColor3 = "InputBg" },
+		Parent = rightCluster,
 	}, {
-		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.35),
+		Creator.corner(8),
+		Creator.stroke("Outline", 1, 0),
 		Creator.new("ImageLabel", {
 			AnchorPoint = Vector2.new(0, 0.5),
-			Position = UDim2.new(0, 7, 0.5, 0),
-			Size = UDim2.fromOffset(12, 12),
+			Position = UDim2.new(0, 8, 0.5, 0),
+			Size = UDim2.fromOffset(13, 13),
 			Image = Icons.resolve("search") or "",
 			ZIndex = 14,
 			ThemeBind = { ImageColor3 = "TextMuted" },
 		}),
-		Creator.new("TextLabel", {
-			Position = UDim2.fromOffset(23, 0),
-			Size = UDim2.new(1, -26, 1, 0),
-			Font = Enum.Font.BuilderSans,
-			TextSize = 11,
-			Text = "Search  ⌘K",
-			ZIndex = 14,
-			ThemeBind = { TextColor3 = "TextSecondary" },
-		}),
 	})
 
-	Creator.bindInteractive(searchBtn, {
-		NormalToken = "ControlBg",
-		HoverToken = "ControlHover",
-		PressScale = 0.96,
-	})
-
-	searchBtn.Activated:Connect(function()
-		if window.CommandPalette then
-			window.CommandPalette:Toggle()
-		end
-	end)
-
-	local keyPill = Creator.new("TextButton", {
-		Name = "HidePill",
-		Size = UDim2.fromOffset(48, 24),
-		Font = Enum.Font.RobotoMono,
-		TextSize = 11,
-		Text = Util.formatKeyName(window.ToggleKey),
-		LayoutOrder = 2,
-		ZIndex = 13,
+	local searchBox = Creator.new("TextBox", {
+		Name = "SearchBox",
+		Position = UDim2.fromOffset(26, 0),
+		Size = UDim2.new(1, -32, 1, 0),
+		Font = Enum.Font.BuilderSans,
+		TextSize = 13,
+		Text = "",
+		PlaceholderText = "Search...",
+		ClearTextOnFocus = false,
+		ZIndex = 14,
 		ThemeBind = {
-			BackgroundColor3 = "ControlBg",
-			TextColor3 = "TextMuted",
+			TextColor3 = "Text",
+			PlaceholderColor3 = "TextMuted",
 		},
-		Parent = rightActions,
-	}, {
-		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.35),
+		Parent = searchWrap,
 	})
 
-	keyPill.Activated:Connect(function()
-		window:ToggleVisibility()
+	searchBox:GetPropertyChangedSignal("Text"):Connect(function()
+		window:FilterActiveTab(searchBox.Text)
 	end)
 
-	-- Smooth Window Dragging (clamped to screen bounds)
+	local function makeHeaderIconBtn(name, order, iconName, hoverColorToken, callback)
+		local btn = Creator.new("TextButton", {
+			Name = name,
+			Size = UDim2.fromOffset(28, 28),
+			Text = "",
+			AutoButtonColor = false,
+			LayoutOrder = order,
+			ZIndex = 13,
+			ThemeBind = { BackgroundColor3 = "RowBg" },
+			Parent = rightCluster,
+		}, {
+			Creator.corner(8),
+			Creator.stroke("Outline", 1, 0),
+		})
+
+		local ico = Creator.new("ImageLabel", {
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 0, 0.5, 0),
+			Size = UDim2.fromOffset(14, 14),
+			Image = Icons.resolve(iconName) or "",
+			ZIndex = 14,
+			ThemeBind = { ImageColor3 = "TextSecondary" },
+			Parent = btn,
+		})
+
+		btn.MouseEnter:Connect(function()
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get(hoverColorToken or "RowHover") }, 0.12)
+			Animator.tween(
+				ico,
+				{ ImageColor3 = ThemeManager:Get(hoverColorToken == "Error" and "OnAccent" or "Text") },
+				0.12
+			)
+		end)
+		btn.MouseLeave:Connect(function()
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get("RowBg") }, 0.14)
+			Animator.tween(ico, { ImageColor3 = ThemeManager:Get("TextSecondary") }, 0.14)
+		end)
+		btn.Activated:Connect(callback)
+		return btn, ico
+	end
+
+	-- Theme Quick Cycle Button (Obsidian <-> Light)
+	makeHeaderIconBtn("ThemeBtn", 2, "sun", "RowHover", function()
+		local nextTheme = ThemeManager.CurrentTheme == "Light" and "Obsidian" or "Light"
+		ThemeManager:SetTheme(nextTheme, true)
+	end)
+
+	-- Minimize to Floating Pill Button
+	makeHeaderIconBtn("MinimizeBtn", 3, "minus", "RowHover", function()
+		window:MinimizeToPill(true)
+	end)
+
+	-- Close / Unload Button
+	makeHeaderIconBtn("CloseBtn", 4, "x", "Error", function()
+		window:PromptClose()
+	end)
+
+	-- Smooth, Full-Screen Window Dragging (UP, DOWN, LEFT, RIGHT)
 	local dragging = false
 	local dragStart = Vector2.zero
-	local startPos = UDim2.new()
+	local startCenter = Vector2.zero
 
-	bar.InputBegan:Connect(function(input)
+	local function beginDrag(input)
 		if
 			input.UserInputType == Enum.UserInputType.MouseButton1
 			or input.UserInputType == Enum.UserInputType.Touch
@@ -2761,9 +2727,17 @@ function TitleBar.create(window, opts)
 			Popover.close()
 			dragging = true
 			dragStart = Vector2.new(input.Position.X, input.Position.Y)
-			startPos = window.Root.Position
+			local vp = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
+			local pos = window.Root.Position
+			startCenter = Vector2.new(pos.X.Scale * vp.X + pos.X.Offset, pos.Y.Scale * vp.Y + pos.Y.Offset)
 		end
-	end)
+	end
+
+	bar.InputBegan:Connect(beginDrag)
+	badge.InputBegan:Connect(beginDrag)
+	titleLabel.InputBegan:Connect(beginDrag)
+	sep.InputBegan:Connect(beginDrag)
+	activeTabLabel.InputBegan:Connect(beginDrag)
 
 	window.Maid:Add(Services.UserInputService.InputChanged:Connect(function(input)
 		if not dragging then
@@ -2775,11 +2749,9 @@ function TitleBar.create(window, opts)
 		then
 			local delta = Vector2.new(input.Position.X, input.Position.Y) - dragStart
 			local vp = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
-			local w = window.Root.AbsoluteSize.X
-			local h = window.Root.AbsoluteSize.Y
-			local newX = math.clamp(startPos.X.Offset + delta.X, math.floor(w * 0.5) - w + 60, vp.X - 60)
-			local newY = math.clamp(startPos.Y.Offset + delta.Y, math.floor(h * 0.5) + 4, vp.Y - 40)
-			window.Root.Position = UDim2.new(startPos.X.Scale, newX, startPos.Y.Scale, newY)
+			local newX = math.clamp(startCenter.X + delta.X, 60, vp.X - 60)
+			local newY = math.clamp(startCenter.Y + delta.Y, 40, vp.Y - 40)
+			window.Root.Position = UDim2.fromOffset(math.floor(newX + 0.5), math.floor(newY + 0.5))
 		end
 	end))
 
@@ -2795,17 +2767,18 @@ function TitleBar.create(window, opts)
 	return {
 		Frame = bar,
 		TitleLabel = titleLabel,
-		SubtitleLabel = subtitleLabel,
-		KeyPill = keyPill,
+		SearchBox = searchBox,
 		SetTitle = function(_, t)
 			titleLabel.Text = tostring(t or "")
 		end,
-		SetSubtitle = function(_, s)
-			subtitleLabel.Text = tostring(s or "")
+		SetActiveTabTitle = function(_, tabName)
+			activeTabLabel.Text = tostring(tabName or "")
+			if searchBox.Text ~= "" then
+				searchBox.Text = ""
+			end
 		end,
-		UpdateKeyText = function(_, k)
-			keyPill.Text = Util.formatKeyName(k)
-		end,
+		SetSubtitle = function() end,
+		UpdateKeyText = function() end,
 	}
 end
 
@@ -2814,7 +2787,6 @@ end
 
 -- [[ Module: Window/Sidebar ]]
 __modules["Window/Sidebar"] = function(require)
-local Services = require("Core/Services")
 local Creator = require("Core/Creator")
 local ThemeManager = require("Theme/ThemeManager")
 local Animator = require("Motion/Animator")
@@ -2824,60 +2796,42 @@ local Sidebar = {}
 
 function Sidebar.create(window, opts)
 	opts = opts or {}
-	local expandedWidth = opts.Width or 178
-	local collapsedWidth = 54
+	local dockWidth = 56
 	local collapsed = false
 
+	-- Floating Left Capsule Dock (inset 10px from left & bottom, below the 44px Floating Header)
 	local container = Creator.new("Frame", {
-		Name = "Sidebar",
-		Position = UDim2.fromOffset(0, 44),
-		Size = UDim2.new(0, expandedWidth, 1, -44),
+		Name = "FloatingDock",
+		Position = UDim2.fromOffset(10, 62),
+		Size = UDim2.new(0, dockWidth, 1, -72),
 		BackgroundTransparency = 0,
 		ClipsDescendants = true,
 		ZIndex = 6,
 		ThemeBind = { BackgroundColor3 = "SidebarBg" },
 		Parent = window.Chrome,
 	}, {
-		Creator.new("Frame", {
-			Name = "RightBorder",
-			AnchorPoint = Vector2.new(1, 0),
-			Position = UDim2.new(1, 0, 0, 0),
-			Size = UDim2.new(0, 1, 1, 0),
-			ZIndex = 8,
-			ThemeBind = { BackgroundColor3 = "Border" },
-		}),
+		Creator.corner(14),
+		Creator.stroke("Outline", 1.2, 0),
 	})
 
-	-- Tab list container with floating active pill indicator
-	local listWrapper = Creator.new("Frame", {
-		Name = "TabListWrapper",
-		Position = UDim2.fromOffset(0, 10),
-		Size = UDim2.new(1, 0, 1, -64),
-		BackgroundTransparency = 1,
-		ZIndex = 6,
-		Parent = container,
-	})
-
-	local activeIndicator = Creator.new("Frame", {
-		Name = "ActivePill",
-		Position = UDim2.fromOffset(8, 0),
-		Size = UDim2.new(1, -16, 0, 32),
-		BackgroundTransparency = 0.86,
+	-- Sliding Active Pill with Signature Indigo->Cyan Gradient + Left Glow Bar
+	local activePill = Creator.new("Frame", {
+		Name = "ActiveDockPill",
+		AnchorPoint = Vector2.new(0.5, 0),
+		Position = UDim2.new(0.5, 0, 0, 8),
+		Size = UDim2.fromOffset(40, 40),
+		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		Visible = false,
-		ZIndex = 6,
-		ThemeBind = { BackgroundColor3 = "Accent" },
-		Parent = listWrapper,
+		ZIndex = 7,
+		Parent = container,
 	}, {
-		Creator.corner(8),
-		Creator.new("Frame", {
-			Name = "AccentBar",
-			AnchorPoint = Vector2.new(0, 0.5),
-			Position = UDim2.new(0, 0, 0.5, 0),
-			Size = UDim2.fromOffset(3, 16),
-			ZIndex = 7,
-			ThemeBind = { BackgroundColor3 = "Accent" },
-		}, {
-			Creator.corner(2),
+		Creator.corner(11),
+		Creator.new("UIGradient", {
+			Color = ColorSequence.new({
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(99, 102, 241)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(56, 189, 248)),
+			}),
+			Rotation = 45,
 		}),
 	})
 
@@ -2885,195 +2839,78 @@ function Sidebar.create(window, opts)
 		Name = "TabScroll",
 		Size = UDim2.new(1, 0, 1, 0),
 		BackgroundTransparency = 1,
-		ScrollBarThickness = 2,
+		ScrollBarThickness = 0,
 		AutomaticCanvasSize = Enum.AutomaticSize.Y,
 		CanvasSize = UDim2.new(0, 0, 0, 0),
-		ZIndex = 7,
-		Parent = listWrapper,
-	}, {
-		Creator.padding(0, 8, 8, 8),
-		Creator.list(4, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Top),
-	})
-
-	-- User Footer Profile Card (macOS System Settings style)
-	local lp = Services.Players and Services.Players.LocalPlayer
-	local displayName = (lp and lp.DisplayName) or "Perfectus"
-	local username = (lp and ("@" .. lp.Name)) or "@user"
-	local avatarImg = ""
-	if lp and lp.UserId and lp.UserId > 0 then
-		avatarImg = string.format("rbxthumb://type=AvatarHeadShot&id=%d&w=48&h=48", lp.UserId)
-	end
-
-	local footer = Creator.new("Frame", {
-		Name = "UserFooter",
-		AnchorPoint = Vector2.new(0, 1),
-		Position = UDim2.new(0, 0, 1, 0),
-		Size = UDim2.new(1, 0, 0, 52),
-		BackgroundTransparency = 1,
-		ZIndex = 7,
+		ZIndex = 8,
 		Parent = container,
 	}, {
-		Creator.new("Frame", {
-			Name = "TopDivider",
-			Size = UDim2.new(1, -16, 0, 1),
-			Position = UDim2.fromOffset(8, 0),
-			ZIndex = 7,
-			ThemeBind = { BackgroundColor3 = "Border" },
-		}),
-	})
-
-	Creator.new("ImageLabel", {
-		Name = "Avatar",
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 12, 0.5, 1),
-		Size = UDim2.fromOffset(28, 28),
-		Image = avatarImg,
-		ZIndex = 8,
-		ThemeBind = { BackgroundColor3 = "ControlBg" },
-		Parent = footer,
-	}, {
-		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.25),
-	})
-
-	local userTextCol = Creator.new("Frame", {
-		Name = "UserText",
-		Position = UDim2.fromOffset(48, 10),
-		Size = UDim2.new(1, -56, 0, 32),
-		BackgroundTransparency = 1,
-		ZIndex = 8,
-		Parent = footer,
-	})
-
-	Creator.new("TextLabel", {
-		Name = "DisplayName",
-		Size = UDim2.new(1, 0, 0, 16),
-		Font = Enum.Font.BuilderSansMedium,
-		TextSize = 13,
-		Text = displayName,
-		TextTruncate = Enum.TextTruncate.AtEnd,
-		ZIndex = 8,
-		ThemeBind = { TextColor3 = "Text" },
-		Parent = userTextCol,
-	})
-
-	Creator.new("TextLabel", {
-		Name = "Username",
-		Position = UDim2.fromOffset(0, 15),
-		Size = UDim2.new(1, 0, 0, 14),
-		Font = Enum.Font.BuilderSans,
-		TextSize = 11,
-		Text = username,
-		TextTruncate = Enum.TextTruncate.AtEnd,
-		ZIndex = 8,
-		ThemeBind = { TextColor3 = "TextMuted" },
-		Parent = userTextCol,
+		Creator.padding(8, 0, 8, 0),
+		Creator.list(8, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Center, Enum.VerticalAlignment.Top),
 	})
 
 	local orderCounter = 0
 	local tabButtons = {}
-	local groupLabels = {}
 
 	local sidebarObj = {
 		Frame = container,
 		TabScroll = tabScroll,
-		ExpandedWidth = expandedWidth,
-		CollapsedWidth = collapsedWidth,
+		ExpandedWidth = dockWidth,
+		CollapsedWidth = 0,
 	}
 
-	function sidebarObj:AddGroupHeader(title)
-		orderCounter += 1
-		local lbl = Creator.new("TextLabel", {
-			Name = "Group_" .. tostring(title),
-			Size = UDim2.new(1, 0, 0, 20),
-			Font = Enum.Font.BuilderSansBold,
-			TextSize = 10,
-			Text = string.upper(tostring(title or "")),
-			LayoutOrder = orderCounter,
-			Visible = not collapsed,
-			ZIndex = 7,
-			ThemeBind = { TextColor3 = "SectionHeader" },
-			Parent = tabScroll,
-		}, {
-			Creator.padding(4, 8, 0, 8),
-		})
-		groupLabels[#groupLabels + 1] = lbl
-		return lbl
+	function sidebarObj:AddGroupHeader()
+		return nil
 	end
 
-	function sidebarObj:AddTabButton(tab, icon, badgeText)
+	function sidebarObj:AddTabButton(tab, icon)
 		orderCounter += 1
 		local btn = Creator.new("TextButton", {
 			Name = "TabBtn_" .. tostring(tab.Title),
-			Size = UDim2.new(1, 0, 0, 32),
+			Size = UDim2.fromOffset(40, 40),
 			BackgroundTransparency = 1,
 			Text = "",
+			AutoButtonColor = false,
 			LayoutOrder = orderCounter,
-			ZIndex = 8,
+			ZIndex = 9,
+			ThemeBind = { BackgroundColor3 = "RowHover" },
 			Parent = tabScroll,
 		}, {
-			Creator.corner(8),
+			Creator.corner(11),
 		})
+
+		local scale = Creator.new("UIScale", { Scale = 1, Parent = btn })
 
 		local iconImg = Creator.new("ImageLabel", {
 			Name = "Icon",
-			AnchorPoint = Vector2.new(0, 0.5),
-			Position = UDim2.new(0, 10, 0.5, 0),
-			Size = UDim2.fromOffset(16, 16),
-			Image = Icons.resolve(icon or "circle") or "",
-			ZIndex = 9,
-			ThemeBind = { ImageColor3 = "TextSecondary" },
+			AnchorPoint = Vector2.new(0.5, 0.5),
+			Position = UDim2.new(0.5, 0, 0.5, 0),
+			Size = UDim2.fromOffset(20, 20),
+			Image = Icons.resolve(icon or "layers") or "",
+			ZIndex = 10,
+			ThemeBind = { ImageColor3 = "SidebarIconInactive" },
 			Parent = btn,
 		})
-
-		local titleLbl = Creator.new("TextLabel", {
-			Name = "Title",
-			Position = UDim2.fromOffset(34, 0),
-			Size = UDim2.new(1, -42, 1, 0),
-			Font = Enum.Font.BuilderSansMedium,
-			TextSize = 13,
-			Text = tostring(tab.Title),
-			TextTruncate = Enum.TextTruncate.AtEnd,
-			Visible = not collapsed,
-			ZIndex = 9,
-			ThemeBind = { TextColor3 = "TextSecondary" },
-			Parent = btn,
-		})
-
-		local badge = nil
-		if badgeText and badgeText ~= "" then
-			badge = Creator.new("TextLabel", {
-				Name = "Badge",
-				AnchorPoint = Vector2.new(1, 0.5),
-				Position = UDim2.new(1, -6, 0.5, 0),
-				Size = UDim2.fromOffset(22, 16),
-				Font = Enum.Font.BuilderSansBold,
-				TextSize = 10,
-				Text = tostring(badgeText),
-				TextXAlignment = Enum.TextXAlignment.Center,
-				Visible = not collapsed,
-				ZIndex = 9,
-				ThemeBind = {
-					BackgroundColor3 = "ControlBg",
-					TextColor3 = "TextSecondary",
-				},
-				Parent = btn,
-			}, {
-				Creator.corner(UDim.new(1, 0)),
-			})
-		end
 
 		btn.MouseEnter:Connect(function()
+			Animator.spring(scale, "Scale", 1.1, { frequency = 20, damping = 0.78 })
 			if window.ActiveTab ~= tab then
-				Animator.tween(btn, { BackgroundTransparency = 0.92 }, 0.12)
+				Animator.tween(btn, { BackgroundTransparency = 0.45 }, 0.12)
 			end
 		end)
 
 		btn.MouseLeave:Connect(function()
+			Animator.spring(scale, "Scale", 1, { frequency = 18, damping = 0.82 })
 			Animator.tween(btn, { BackgroundTransparency = 1 }, 0.14)
 		end)
 
 		btn.Activated:Connect(function()
+			Animator.spring(scale, "Scale", 0.9, { frequency = 24, damping = 0.8 })
+			task.delay(0.08, function()
+				if scale.Parent then
+					Animator.spring(scale, "Scale", 1, { frequency = 18, damping = 0.76 })
+				end
+			end)
 			window:SelectTab(tab)
 		end)
 
@@ -3081,8 +2918,6 @@ function Sidebar.create(window, opts)
 			Tab = tab,
 			Button = btn,
 			Icon = iconImg,
-			Title = titleLbl,
-			Badge = badge,
 		}
 		tabButtons[#tabButtons + 1] = entry
 		return entry
@@ -3091,42 +2926,32 @@ function Sidebar.create(window, opts)
 	function sidebarObj:UpdateActive(selectedTab)
 		for _, entry in ipairs(tabButtons) do
 			local isCurrent = (entry.Tab == selectedTab)
-			ThemeManager:Bind(entry.Icon, { ImageColor3 = isCurrent and "Accent" or "TextSecondary" })
-			ThemeManager:Bind(entry.Title, { TextColor3 = isCurrent and "Text" or "TextSecondary" })
-			entry.Title.Font = isCurrent and Enum.Font.BuilderSansBold or Enum.Font.BuilderSansMedium
-
 			if isCurrent then
-				activeIndicator.Visible = true
+				ThemeManager:Unbind(entry.Icon)
+				entry.Icon.ImageColor3 = Color3.fromRGB(255, 255, 255)
+				activePill.Visible = true
 				task.defer(function()
-					if entry.Button.Parent and listWrapper.Parent then
-						local relY = entry.Button.AbsolutePosition.Y - listWrapper.AbsolutePosition.Y
+					if entry.Button.Parent and container.Parent then
+						local relY = entry.Button.AbsolutePosition.Y - container.AbsolutePosition.Y
 						local scale = (window.UIScale and window.UIScale.Scale > 0) and window.UIScale.Scale or 1
 						Animator.spring(
-							activeIndicator,
+							activePill,
 							"Position",
-							UDim2.fromOffset(8, math.floor(relY / scale + 0.5)),
-							{ frequency = 18, damping = 0.84 }
+							UDim2.new(0.5, 0, 0, math.floor(relY / scale + 0.5)),
+							{ frequency = 20, damping = 0.82 }
 						)
 					end
 				end)
+			else
+				ThemeManager:Bind(entry.Icon, { ImageColor3 = "SidebarIconInactive" })
 			end
 		end
 	end
 
 	function sidebarObj:SetCollapsed(state)
 		collapsed = state == true
-		local targetW = collapsed and collapsedWidth or expandedWidth
-		userTextCol.Visible = not collapsed
-		for _, g in ipairs(groupLabels) do
-			g.Visible = not collapsed
-		end
-		for _, entry in ipairs(tabButtons) do
-			entry.Title.Visible = not collapsed
-			if entry.Badge then
-				entry.Badge.Visible = not collapsed
-			end
-		end
-		Animator.spring(container, "Size", UDim2.new(0, targetW, 1, -44), { frequency = 18, damping = 0.86 })
+		local targetW = collapsed and 0 or dockWidth
+		Animator.spring(container, "Size", UDim2.new(0, targetW, 1, -72), { frequency = 18, damping = 0.86 })
 		return targetW
 	end
 
@@ -3385,6 +3210,182 @@ end
 return Scroll
 end
 
+-- [[ Module: Elements/Button ]]
+__modules["Elements/Button"] = function(require)
+local Creator = require("Core/Creator")
+local Signal = require("Core/Signal")
+local Util = require("Core/Util")
+local ThemeManager = require("Theme/ThemeManager")
+local Animator = require("Motion/Animator")
+
+local Button = {}
+
+function Button.create(section, opts)
+	opts = opts or {}
+	local style = opts.Style or "Secondary" -- "Primary" | "Secondary" | "Destructive"
+	local title = tostring(opts.Title or opts.ButtonText or "Button")
+	local confirmRequired = opts.Confirm == true
+
+	local bgToken = "RowBg"
+	local hoverToken = "RowHover"
+	local textToken = "Text"
+	if style == "Primary" then
+		bgToken = "Accent"
+		hoverToken = "AccentHover"
+		textToken = "OnAccent"
+	elseif style == "Destructive" then
+		bgToken = "Error"
+		hoverToken = "Error"
+		textToken = "OnAccent"
+	end
+
+	local btn = Creator.new("TextButton", {
+		Name = "Row_" .. title,
+		Size = UDim2.new(1, 0, 0, 38),
+		BackgroundTransparency = 0,
+		Text = "",
+		AutoButtonColor = false,
+		LayoutOrder = section:_nextOrder(),
+		ZIndex = 4,
+		ThemeBind = { BackgroundColor3 = bgToken },
+		Parent = section.Container,
+	}, {
+		Creator.corner(10),
+		Creator.stroke("Outline", 1, 0),
+		Creator.new("UIScale", { Scale = 1 }),
+	})
+
+	local titleLabel = Creator.new("TextLabel", {
+		Name = "Title",
+		Size = UDim2.new(1, -24, 1, 0),
+		Position = UDim2.fromOffset(12, 0),
+		Font = Enum.Font.BuilderSansBold,
+		TextSize = 14,
+		Text = title,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		TextYAlignment = Enum.TextYAlignment.Center,
+		ZIndex = 5,
+		ThemeBind = { TextColor3 = textToken },
+		Parent = btn,
+	})
+
+	local scaleInst = btn:FindFirstChildOfClass("UIScale")
+	local awaitingConfirm = false
+	local confirmResetThread = nil
+	local running = false
+	local locked = false
+
+	btn.MouseEnter:Connect(function()
+		if not awaitingConfirm then
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get(hoverToken) }, 0.12)
+		end
+	end)
+
+	btn.MouseLeave:Connect(function()
+		if not awaitingConfirm then
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get(bgToken) }, 0.14)
+		end
+	end)
+
+	local function resetConfirm()
+		awaitingConfirm = false
+		if confirmResetThread then
+			pcall(task.cancel, confirmResetThread)
+			confirmResetThread = nil
+		end
+		titleLabel.Text = title
+		Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get(bgToken) }, 0.16)
+	end
+
+	local control = {
+		Kind = "Button",
+		Row = btn,
+		TitleLabel = titleLabel,
+		Section = section,
+		Window = section.Window,
+		Title = title,
+		Changed = Signal.new(),
+		IsLocked = function()
+			return locked
+		end,
+		Lock = function()
+			locked = true
+		end,
+		Unlock = function()
+			locked = false
+		end,
+		Highlight = function()
+			Animator.pulseHighlight(btn)
+		end,
+		SetTitle = function(self, newTitle)
+			self.Title = tostring(newTitle or "")
+			title = self.Title
+			titleLabel.Text = title
+		end,
+		SetButtonText = function(self, newTitle)
+			self:SetTitle(newTitle)
+		end,
+		SetVisible = function(_, v)
+			btn.Visible = v == true
+		end,
+		OnChanged = function(self, fn)
+			return self.Changed:Connect(fn)
+		end,
+		Destroy = function(self)
+			self.Changed:Destroy()
+			if btn and btn.Parent then
+				btn:Destroy()
+			end
+		end,
+	}
+
+	local function trigger()
+		if locked or running then
+			return
+		end
+		if confirmRequired and not awaitingConfirm then
+			awaitingConfirm = true
+			titleLabel.Text = "Confirm: " .. title
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get("Warning") }, 0.14)
+			confirmResetThread = task.delay(2.5, resetConfirm)
+			return
+		end
+		if awaitingConfirm then
+			resetConfirm()
+		end
+
+		if scaleInst then
+			Animator.spring(scaleInst, "Scale", 0.97, { frequency = 24, damping = 0.8 })
+			task.delay(0.08, function()
+				if scaleInst.Parent then
+					Animator.spring(scaleInst, "Scale", 1, { frequency = 18, damping = 0.78 })
+				end
+			end)
+		end
+
+		control.Changed:Fire()
+		if type(opts.Callback) == "function" then
+			running = true
+			task.spawn(function()
+				Util.safeCall(control.Title, opts.Callback, control.Window and control.Window._notifyError)
+				running = false
+			end)
+		end
+	end
+
+	btn.Activated:Connect(trigger)
+	control.Fire = trigger
+
+	if section.Window and section.Window._registerSearchable then
+		section.Window:_registerSearchable(control, section)
+	end
+
+	return control
+end
+
+return Button
+end
+
 -- [[ Module: Components/RowBase ]]
 __modules["Components/RowBase"] = function(require)
 local Creator = require("Core/Creator")
@@ -3399,38 +3400,48 @@ function RowBase.create(section, opts)
 	local rightWidth = opts.RightWidth or 120
 	local minHeight = opts.MinHeight or 42
 	local clickable = opts.Clickable == true
+	local framed = opts.Framed ~= false
 
 	local rowClass = clickable and "TextButton" or "Frame"
 	local rowProps = {
 		Name = opts.Name or ("Row_" .. tostring(opts.Title or "Item")),
 		Size = UDim2.new(1, 0, 0, minHeight),
 		AutomaticSize = Enum.AutomaticSize.Y,
-		BackgroundTransparency = 0,
+		BackgroundTransparency = framed and 0 or 1,
 		LayoutOrder = section:_nextOrder(),
 		ZIndex = 3,
-		ThemeBind = { BackgroundColor3 = "RowBg" },
 		Parent = section.Container,
 	}
+	if framed then
+		rowProps.ThemeBind = { BackgroundColor3 = "RowBg" }
+	end
 	if clickable then
 		rowProps.Text = ""
 		rowProps.AutoButtonColor = false
 	end
 
-	local row = Creator.new(rowClass, rowProps, {
-		Creator.corner(8),
+	local children = {
+		Creator.corner(10),
 		Creator.padding(8, 12, 8, 12),
 		Creator.new("UISizeConstraint", {
 			MinSize = Vector2.new(0, minHeight),
 		}),
-	})
+	}
+	if framed then
+		table.insert(children, Creator.stroke("Outline", 1, 0))
+	end
 
-	Creator.bindInteractive(row, {
-		NormalToken = "RowBg",
-		HoverToken = "RowHover",
-	})
+	local row = Creator.new(rowClass, rowProps, children)
+
+	if framed then
+		Creator.bindInteractive(row, {
+			NormalToken = "RowBg",
+			HoverToken = "RowHover",
+		})
+	end
 
 	local hasIcon = opts.Icon ~= nil and opts.Icon ~= ""
-	local iconOffset = hasIcon and 26 or 0
+	local iconOffset = hasIcon and 24 or 0
 
 	local iconImage = nil
 	if hasIcon then
@@ -3511,7 +3522,6 @@ function RowBase.create(section, opts)
 		})
 	end
 
-	-- Lock overlay
 	local locked = false
 	local lockReason = nil
 	local lockOverlay = nil
@@ -3567,17 +3577,17 @@ function RowBase.create(section, opts)
 				Name = "LockOverlay",
 				Size = UDim2.new(1, 0, 1, 0),
 				Position = UDim2.fromOffset(0, 0),
-				BackgroundTransparency = 0.32,
+				BackgroundTransparency = 0.28,
 				Text = "",
 				AutoButtonColor = false,
 				ZIndex = 12,
 				ThemeBind = { BackgroundColor3 = "SectionBg" },
 				Parent = row,
 			}, {
-				Creator.corner(8),
+				Creator.corner(10),
 				Creator.new("ImageLabel", {
 					AnchorPoint = Vector2.new(1, 0.5),
-					Position = UDim2.new(1, -6, 0.5, 0),
+					Position = UDim2.new(1, -10, 0.5, 0),
 					Size = UDim2.fromOffset(14, 14),
 					Image = Icons.resolve("lock") or "",
 					ZIndex = 13,
@@ -3607,24 +3617,9 @@ function RowBase.create(section, opts)
 		end
 	end
 
-	-- Register Tooltip & ContextMenu & CommandPalette entry if Window provides hooks
 	if section.Window then
-		if opts.Tooltip and section.Window._registerTooltip then
-			section.Window:_registerTooltip(row, function()
-				if locked and lockReason then
-					return tostring(opts.Tooltip) .. " (" .. lockReason .. ")"
-				end
-				return tostring(opts.Tooltip)
-			end)
-		else
-			if section.Window._registerTooltip then
-				section.Window:_registerTooltip(row, function()
-					if locked and lockReason then
-						return lockReason
-					end
-					return nil
-				end)
-			end
+		if type(opts.Tooltip) == "string" and opts.Tooltip ~= "" and section.Window._registerTooltip then
+			section.Window:_registerTooltip(row, opts.Tooltip)
 		end
 		if section.Window._registerContextMenu then
 			section.Window:_registerContextMenu(row, control)
@@ -3638,151 +3633,6 @@ function RowBase.create(section, opts)
 end
 
 return RowBase
-end
-
--- [[ Module: Elements/Button ]]
-__modules["Elements/Button"] = function(require)
-local Creator = require("Core/Creator")
-local Util = require("Core/Util")
-local ThemeManager = require("Theme/ThemeManager")
-local Animator = require("Motion/Animator")
-local Icons = require("Assets/Icons")
-local RowBase = require("Components/RowBase")
-
-local Button = {}
-
-function Button.create(section, opts)
-	opts = opts or {}
-	local style = opts.Style or "Secondary" -- "Primary" | "Secondary" | "Destructive"
-	local buttonLabel = opts.ButtonText or (style == "Destructive" and "Run" or "Execute")
-	local confirmRequired = opts.Confirm == true
-
-	local control = RowBase.create(section, {
-		Title = opts.Title or "Button",
-		Description = opts.Description,
-		Icon = opts.Icon,
-		Tooltip = opts.Tooltip,
-		RightWidth = 104,
-		Clickable = true,
-		TitleColorToken = style == "Destructive" and "Error" or "Text",
-		IconColorToken = style == "Destructive" and "Error" or "TextSecondary",
-	})
-	control.Kind = "Button"
-
-	local bgToken = "ControlBg"
-	local textToken = "Text"
-	if style == "Primary" then
-		bgToken = "Accent"
-		textToken = "OnAccent"
-	elseif style == "Destructive" then
-		bgToken = "Error"
-		textToken = "OnAccent"
-	end
-
-	local actionPill = Creator.new("Frame", {
-		Name = "ActionPill",
-		AnchorPoint = Vector2.new(1, 0.5),
-		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(88, 26),
-		ZIndex = 6,
-		ThemeBind = { BackgroundColor3 = bgToken },
-		Parent = control.RightSlot,
-	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, style == "Secondary" and 0.25 or 0.7),
-		Creator.new("UIScale", { Scale = 1 }),
-	})
-
-	local pillLabel = Creator.new("TextLabel", {
-		Name = "PillText",
-		Size = UDim2.new(1, -22, 1, 0),
-		Position = UDim2.fromOffset(8, 0),
-		Font = Enum.Font.BuilderSansMedium,
-		TextSize = 12,
-		Text = buttonLabel,
-		TextXAlignment = Enum.TextXAlignment.Center,
-		ZIndex = 7,
-		ThemeBind = { TextColor3 = textToken },
-		Parent = actionPill,
-	})
-
-	local chevron = Creator.new("ImageLabel", {
-		Name = "Arrow",
-		AnchorPoint = Vector2.new(1, 0.5),
-		Position = UDim2.new(1, -6, 0.5, 0),
-		Size = UDim2.fromOffset(12, 12),
-		Image = Icons.resolve(opts.ActionIcon or "chevron-right") or "",
-		ZIndex = 7,
-		ThemeBind = { ImageColor3 = textToken },
-		Parent = actionPill,
-	})
-
-	local scaleInst = actionPill:FindFirstChildOfClass("UIScale")
-	local awaitingConfirm = false
-	local confirmResetThread = nil
-	local running = false
-
-	local function resetConfirm()
-		awaitingConfirm = false
-		if confirmResetThread then
-			pcall(task.cancel, confirmResetThread)
-			confirmResetThread = nil
-		end
-		pillLabel.Text = buttonLabel
-		Animator.tween(actionPill, { BackgroundColor3 = ThemeManager:Get(bgToken) }, 0.16)
-	end
-
-	local function trigger()
-		if control:IsLocked() or running then
-			return
-		end
-		if confirmRequired and not awaitingConfirm then
-			awaitingConfirm = true
-			pillLabel.Text = "Confirm?"
-			Animator.tween(actionPill, { BackgroundColor3 = ThemeManager:Get("Warning") }, 0.14)
-			confirmResetThread = task.delay(2.5, resetConfirm)
-			return
-		end
-		if awaitingConfirm then
-			resetConfirm()
-		end
-
-		if scaleInst then
-			Animator.spring(scaleInst, "Scale", 0.94, { frequency = 22, damping = 0.8 })
-			task.delay(0.09, function()
-				if scaleInst.Parent then
-					Animator.spring(scaleInst, "Scale", 1, { frequency = 16, damping = 0.78 })
-				end
-			end)
-		end
-
-		control.Changed:Fire()
-		if type(opts.Callback) == "function" then
-			running = true
-			task.spawn(function()
-				Util.safeCall(control.Title, opts.Callback, control.Window and control.Window._notifyError)
-				running = false
-			end)
-		end
-	end
-
-	control.Row.Activated:Connect(trigger)
-
-	function control:Fire()
-		trigger()
-	end
-
-	function control:SetButtonText(text)
-		buttonLabel = tostring(text or "Execute")
-		if not awaitingConfirm then
-			pillLabel.Text = buttonLabel
-		end
-	end
-
-	return control
-end
-
-return Button
 end
 
 -- [[ Module: Elements/Toggle ]]
@@ -3828,12 +3678,11 @@ function Toggle.create(section, opts)
 		Tooltip = opts.Tooltip,
 		Flag = opts.Flag or opts.Id,
 		Default = state,
-		RightWidth = hasKeybindSlot and 112 or 54,
+		RightWidth = hasKeybindSlot and 106 or 50,
 		Clickable = true,
 	})
 	control.Kind = "Toggle"
 
-	-- Optional inline keybind badge
 	local keyBtn = nil
 	local listeningKey = false
 	if hasKeybindSlot then
@@ -3841,23 +3690,24 @@ function Toggle.create(section, opts)
 			Name = "KeyChip",
 			AnchorPoint = Vector2.new(1, 0.5),
 			Position = UDim2.new(1, -52, 0.5, 0),
-			Size = UDim2.fromOffset(50, 22),
-			Font = Enum.Font.RobotoMono,
-			TextSize = 11,
+			Size = UDim2.fromOffset(44, 24),
+			Font = Enum.Font.BuilderSansBold,
+			TextSize = 12,
 			Text = Util.formatKeyName(currentKey),
+			TextXAlignment = Enum.TextXAlignment.Center,
 			ZIndex = 6,
 			ThemeBind = {
 				BackgroundColor3 = "ControlBg",
-				TextColor3 = "TextSecondary",
+				TextColor3 = "Text",
 			},
 			Parent = control.RightSlot,
 		}, {
 			Creator.corner(6),
-			Creator.stroke("Border", 1, 0.3),
+			Creator.stroke("Outline", 1, 0),
 		})
 	end
 
-	-- iOS Switch track (44 x 24)
+	-- Sleek Switch Track (44 x 24)
 	local track = Creator.new("Frame", {
 		Name = "SwitchTrack",
 		AnchorPoint = Vector2.new(1, 0.5),
@@ -3868,14 +3718,14 @@ function Toggle.create(section, opts)
 		Parent = control.RightSlot,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.5),
+		Creator.stroke("Outline", 1, 0),
 	})
 
 	local knob = Creator.new("Frame", {
 		Name = "Knob",
 		AnchorPoint = Vector2.new(0, 0.5),
-		Position = state and UDim2.new(1, -22, 0.5, 0) or UDim2.new(0, 2, 0.5, 0),
-		Size = UDim2.fromOffset(20, 20),
+		Position = state and UDim2.new(1, -21, 0.5, 0) or UDim2.new(0, 3, 0.5, 0),
+		Size = UDim2.fromOffset(18, 18),
 		ZIndex = 7,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
@@ -3885,44 +3735,20 @@ function Toggle.create(section, opts)
 
 	local function syncVisuals(animate)
 		local targetColor = ThemeManager:Get(state and "Accent" or "SwitchOff")
-		local targetPos = state and UDim2.new(1, -22, 0.5, 0) or UDim2.new(0, 2, 0.5, 0)
+		local targetPos = state and UDim2.new(1, -21, 0.5, 0) or UDim2.new(0, 3, 0.5, 0)
 		if animate ~= false then
 			Animator.tween(track, { BackgroundColor3 = targetColor }, 0.18)
 			Animator.spring(knob, "Position", targetPos, { frequency = 18, damping = 0.82 })
-			Animator.spring(knob, "Size", UDim2.fromOffset(20, 20), { frequency = 18, damping = 0.82 })
+			Animator.spring(knob, "Size", UDim2.fromOffset(18, 18), { frequency = 18, damping = 0.82 })
 		else
 			track.BackgroundColor3 = targetColor
 			knob.Position = targetPos
-			knob.Size = UDim2.fromOffset(20, 20)
+			knob.Size = UDim2.fromOffset(18, 18)
 		end
 	end
 
 	ThemeManager.Changed:Connect(function()
 		syncVisuals(true)
-	end)
-
-	-- iOS press stretch effect
-	control.Row.InputBegan:Connect(function(input)
-		if control:IsLocked() then
-			return
-		end
-		if
-			input.UserInputType == Enum.UserInputType.MouseButton1
-			or input.UserInputType == Enum.UserInputType.Touch
-		then
-			local stretchPos = state and UDim2.new(1, -26, 0.5, 0) or UDim2.new(0, 2, 0.5, 0)
-			Animator.spring(knob, "Size", UDim2.fromOffset(24, 20), { frequency = 22, damping = 0.85 })
-			Animator.spring(knob, "Position", stretchPos, { frequency = 22, damping = 0.85 })
-		end
-	end)
-
-	control.Row.InputEnded:Connect(function(input)
-		if
-			input.UserInputType == Enum.UserInputType.MouseButton1
-			or input.UserInputType == Enum.UserInputType.Touch
-		then
-			syncVisuals(true)
-		end
 	end)
 
 	local function setValue(newVal, silent)
@@ -3987,7 +3813,6 @@ function Toggle.create(section, opts)
 			end
 			listeningKey = true
 			keyBtn.Text = "..."
-			Animator.tween(keyBtn, { TextColor3 = ThemeManager:Get("Accent") }, 0.12)
 		end)
 
 		Services.UserInputService.InputBegan:Connect(function(input, processed)
@@ -3997,7 +3822,6 @@ function Toggle.create(section, opts)
 			if listeningKey then
 				if input.UserInputType == Enum.UserInputType.Keyboard then
 					listeningKey = false
-					Animator.tween(keyBtn, { TextColor3 = ThemeManager:Get("TextSecondary") }, 0.12)
 					if input.KeyCode == Enum.KeyCode.Escape or input.KeyCode == Enum.KeyCode.Backspace then
 						control:SetKey(nil)
 					else
@@ -4060,13 +3884,13 @@ function Checkbox.create(section, opts)
 		Name = "CheckFrame",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(22, 22),
+		Size = UDim2.fromOffset(24, 24),
 		BackgroundColor3 = ThemeManager:Get(state and "Accent" or "ControlBg"),
 		ZIndex = 6,
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.35),
+		Creator.corner(8),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local icon = Creator.new("ImageLabel", {
@@ -4160,10 +3984,9 @@ end
 __modules["Elements/Slider"] = function(require)
 local Services = require("Core/Services")
 local Creator = require("Core/Creator")
+local Signal = require("Core/Signal")
 local Util = require("Core/Util")
-local ThemeManager = require("Theme/ThemeManager")
 local Animator = require("Motion/Animator")
-local RowBase = require("Components/RowBase")
 
 local Slider = {}
 
@@ -4178,34 +4001,70 @@ function Slider.create(section, opts)
 	local suffix = opts.Suffix or ""
 	local rawDefault = tonumber(opts.Default) or minVal
 	local value = Util.round(Util.clamp(rawDefault, minVal, maxVal), step)
+	local title = tostring(opts.Title or "Slider")
 
-	local control = RowBase.create(section, {
-		Title = opts.Title or "Slider",
-		Description = opts.Description,
-		Icon = opts.Icon,
-		Tooltip = opts.Tooltip,
-		Flag = opts.Flag or opts.Id,
-		Default = value,
-		RightWidth = 190,
-		Clickable = false,
+	-- Sleek Bento 2-Deck Slider Card
+	local row = Creator.new("Frame", {
+		Name = "Row_" .. title,
+		Size = UDim2.new(1, 0, 0, 54),
+		BackgroundTransparency = 0,
+		LayoutOrder = section:_nextOrder(),
+		ZIndex = 3,
+		ThemeBind = { BackgroundColor3 = "RowBg" },
+		Parent = section.Container,
+	}, {
+		Creator.corner(10),
+		Creator.stroke("Outline", 1, 0),
+		Creator.padding(8, 12, 10, 12),
 	})
-	control.Kind = "Slider"
 
-	local trackWidth = 122
+	local topRow = Creator.new("Frame", {
+		Name = "TopHeader",
+		Size = UDim2.new(1, 0, 0, 18),
+		BackgroundTransparency = 1,
+		ZIndex = 4,
+		Parent = row,
+	})
 
+	local titleLabel = Creator.new("TextLabel", {
+		Name = "Title",
+		Size = UDim2.new(1, -84, 1, 0),
+		Font = Enum.Font.BuilderSansMedium,
+		TextSize = 14,
+		Text = title,
+		TextTruncate = Enum.TextTruncate.AtEnd,
+		ZIndex = 4,
+		ThemeBind = { TextColor3 = "Text" },
+		Parent = topRow,
+	})
+
+	local valueBox = Creator.new("TextBox", {
+		Name = "ValueBox",
+		AnchorPoint = Vector2.new(1, 0.5),
+		Position = UDim2.new(1, 0, 0.5, 0),
+		Size = UDim2.fromOffset(78, 20),
+		BackgroundTransparency = 1,
+		Font = Enum.Font.BuilderSansBold,
+		TextSize = 13,
+		TextXAlignment = Enum.TextXAlignment.Right,
+		ClearTextOnFocus = false,
+		ZIndex = 5,
+		ThemeBind = { TextColor3 = "ValueText" },
+		Parent = topRow,
+	})
+
+	-- Full-width sleek pill track with Indigo->Cyan gradient fill
 	local track = Creator.new("TextButton", {
 		Name = "SliderTrack",
-		AnchorPoint = Vector2.new(0, 0.5),
-		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(trackWidth, 6),
-		BackgroundColor3 = ThemeManager:Get("ControlBg"),
+		Position = UDim2.new(0, 0, 0, 26),
+		Size = UDim2.new(1, 0, 0, 8),
 		Text = "",
 		AutoButtonColor = false,
 		ZIndex = 6,
-		Parent = control.RightSlot,
+		ThemeBind = { BackgroundColor3 = "ControlBg" },
+		Parent = row,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.4),
 	})
 
 	local fill = Creator.new("Frame", {
@@ -4213,45 +4072,72 @@ function Slider.create(section, opts)
 		AnchorPoint = Vector2.new(0, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
 		Size = UDim2.new(0, 0, 1, 0),
-		BackgroundColor3 = ThemeManager:Get("Accent"),
+		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 		ZIndex = 7,
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
+		Creator.new("UIGradient", {
+			Color = ColorSequence.new({
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(99, 102, 241)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(56, 189, 248)),
+			}),
+		}),
 	})
 
 	local knob = Creator.new("Frame", {
 		Name = "Knob",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(14, 14),
+		Size = UDim2.fromOffset(16, 16),
 		ZIndex = 8,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.stroke(Color3.fromRGB(99, 102, 241), 2, 0),
 	})
 
-	local valueBox = Creator.new("TextBox", {
-		Name = "ValueBox",
-		AnchorPoint = Vector2.new(1, 0.5),
-		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(60, 22),
-		Font = Enum.Font.RobotoMono,
-		TextSize = 12,
-		TextXAlignment = Enum.TextXAlignment.Center,
-		ClearTextOnFocus = false,
-		ZIndex = 6,
-		ThemeBind = {
-			BackgroundColor3 = "InputBg",
-			TextColor3 = "Text",
-		},
-		Parent = control.RightSlot,
-	}, {
-		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.35),
-	})
+	local locked = false
+	local control = {
+		Kind = "Slider",
+		Row = row,
+		TitleLabel = titleLabel,
+		Section = section,
+		Window = section.Window,
+		Flag = opts.Flag or opts.Id,
+		Title = title,
+		Default = value,
+		Changed = Signal.new(),
+		IsLocked = function()
+			return locked
+		end,
+		Lock = function()
+			locked = true
+		end,
+		Unlock = function()
+			locked = false
+		end,
+		Highlight = function()
+			Animator.pulseHighlight(row)
+		end,
+		SetTitle = function(self, t)
+			self.Title = tostring(t or "")
+			titleLabel.Text = self.Title
+		end,
+		SetVisible = function(_, v)
+			row.Visible = v == true
+		end,
+		OnChanged = function(self, fn)
+			return self.Changed:Connect(fn)
+		end,
+		Destroy = function(self)
+			self.Changed:Destroy()
+			if row and row.Parent then
+				row:Destroy()
+			end
+		end,
+	}
 
 	local function getRatio(val)
 		if maxVal == minVal then
@@ -4262,8 +4148,6 @@ function Slider.create(section, opts)
 
 	local function syncVisuals(animate)
 		local ratio = getRatio(value)
-		fill.BackgroundColor3 = ThemeManager:Get("Accent")
-
 		if animate ~= false then
 			Animator.spring(fill, "Size", UDim2.new(ratio, 0, 1, 0), { frequency = 24, damping = 0.85 })
 			Animator.spring(knob, "Position", UDim2.new(ratio, 0, 0.5, 0), { frequency = 24, damping = 0.85 })
@@ -4275,10 +4159,6 @@ function Slider.create(section, opts)
 			valueBox.Text = tostring(value) .. suffix
 		end
 	end
-
-	ThemeManager.Changed:Connect(function()
-		syncVisuals(true)
-	end)
 
 	local function setValue(newVal, silent)
 		newVal = tonumber(newVal) or minVal
@@ -4321,11 +4201,11 @@ function Slider.create(section, opts)
 	end
 
 	local function startDragging(input)
-		if control:IsLocked() then
+		if locked then
 			return
 		end
 		dragging = true
-		Animator.spring(knob, "Size", UDim2.fromOffset(17, 17), { frequency = 22, damping = 0.82 })
+		Animator.spring(knob, "Size", UDim2.fromOffset(19, 19), { frequency = 22, damping = 0.82 })
 		updateFromInput(input)
 
 		if moveConn then
@@ -4353,7 +4233,7 @@ function Slider.create(section, opts)
 				or endInput.UserInputType == Enum.UserInputType.Touch
 			then
 				dragging = false
-				Animator.spring(knob, "Size", UDim2.fromOffset(14, 14), { frequency = 20, damping = 0.85 })
+				Animator.spring(knob, "Size", UDim2.fromOffset(16, 16), { frequency = 20, damping = 0.85 })
 				if moveConn then
 					moveConn:Disconnect()
 					moveConn = nil
@@ -4401,6 +4281,15 @@ function Slider.create(section, opts)
 	function control:SetMax(newMax)
 		maxVal = tonumber(newMax) or maxVal
 		setValue(value, true)
+	end
+
+	if section.Window then
+		if section.Window._registerContextMenu then
+			section.Window:_registerContextMenu(row, control)
+		end
+		if section.Window._registerSearchable then
+			section.Window:_registerSearchable(control, section)
+		end
 	end
 
 	if control.Flag and control.Window and control.Window.Flags then
@@ -4461,7 +4350,7 @@ function RangeSlider.create(section, opts)
 		Name = "RangeTrack",
 		AnchorPoint = Vector2.new(0, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(trackWidth, 6),
+		Size = UDim2.fromOffset(trackWidth, 12),
 		BackgroundColor3 = ThemeManager:Get("ControlBg"),
 		Text = "",
 		AutoButtonColor = false,
@@ -4469,7 +4358,7 @@ function RangeSlider.create(section, opts)
 		Parent = control.RightSlot,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.4),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local fill = Creator.new("Frame", {
@@ -4488,26 +4377,26 @@ function RangeSlider.create(section, opts)
 		Name = "KnobLow",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(14, 14),
+		Size = UDim2.fromOffset(18, 18),
 		ZIndex = 8,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local knobHigh = Creator.new("Frame", {
 		Name = "KnobHigh",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(14, 14),
+		Size = UDim2.fromOffset(18, 18),
 		ZIndex = 8,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local valueLabel = Creator.new("TextLabel", {
@@ -4773,7 +4662,7 @@ function Dropdown.create(section, opts)
 		Name = "TriggerButton",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(165, 28),
+		Size = UDim2.fromOffset(160, 28),
 		BackgroundColor3 = ThemeManager:Get("ControlBg"),
 		Text = "",
 		AutoButtonColor = false,
@@ -4781,15 +4670,15 @@ function Dropdown.create(section, opts)
 		ThemeBind = { BackgroundColor3 = "ControlBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.corner(8),
+		Creator.stroke("Outline", 1, 0),
 	})
 
 	local valueLabel = Creator.new("TextLabel", {
 		Name = "SelectedText",
 		Position = UDim2.fromOffset(10, 0),
 		Size = UDim2.new(1, -30, 1, 0),
-		Font = Enum.Font.BuilderSans,
+		Font = Enum.Font.BuilderSansMedium,
 		TextSize = 13,
 		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 7,
@@ -5171,16 +5060,16 @@ function Input.create(section, opts)
 		Name = "InputContainer",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(175, 28),
+		Size = UDim2.fromOffset(175, 30),
 		BackgroundColor3 = ThemeManager:Get("InputBg"),
 		ZIndex = 6,
 		ThemeBind = { BackgroundColor3 = "InputBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
+		Creator.corner(10),
 	})
 
-	local stroke = Creator.stroke("Border", 1, 0.35, container)
+	local stroke = Creator.stroke("Outline", 2, 0, container)
 
 	local clearBtn = Creator.new("ImageButton", {
 		Name = "ClearButton",
@@ -6153,13 +6042,13 @@ function Segmented.create(section, opts)
 		Name = "SegmentTrack",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(192, 28),
+		Size = UDim2.fromOffset(186, 28),
 		ZIndex = 6,
 		ThemeBind = { BackgroundColor3 = "InputBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, 0.35),
+		Creator.corner(8),
+		Creator.stroke("Outline", 1, 0),
 		Creator.padding(2, 2, 2, 2),
 	})
 
@@ -6167,11 +6056,10 @@ function Segmented.create(section, opts)
 		Name = "Thumb",
 		Size = UDim2.new(1 / #options, 0, 1, 0),
 		ZIndex = 7,
-		ThemeBind = { BackgroundColor3 = "ControlBg" },
+		ThemeBind = { BackgroundColor3 = "Accent" },
 		Parent = track,
 	}, {
 		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.3),
 	})
 
 	local btnHolder = Creator.new("Frame", {
@@ -6207,7 +6095,7 @@ function Segmented.create(section, opts)
 		for i, btn in ipairs(buttons) do
 			local isCurrent = (i == activeIndex)
 			btn.Font = isCurrent and Enum.Font.BuilderSansBold or Enum.Font.BuilderSansMedium
-			btn.TextColor3 = ThemeManager:Get(isCurrent and "Text" or "TextSecondary")
+			btn.TextColor3 = ThemeManager:Get(isCurrent and "OnAccent" or "TextSecondary")
 		end
 	end
 
@@ -6247,8 +6135,9 @@ function Segmented.create(section, opts)
 				Size = UDim2.new(1 / n, 0, 1, 0),
 				BackgroundTransparency = 1,
 				Font = Enum.Font.BuilderSansMedium,
-				TextSize = 11,
+				TextSize = 13,
 				Text = label,
+				TextXAlignment = Enum.TextXAlignment.Center,
 				TextTruncate = Enum.TextTruncate.AtEnd,
 				ZIndex = 9,
 				Parent = btnHolder,
@@ -6342,19 +6231,19 @@ function Stepper.create(section, opts)
 		Name = "Capsule",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(68, 26),
+		Size = UDim2.fromOffset(68, 28),
 		ZIndex = 6,
 		ThemeBind = { BackgroundColor3 = "ControlBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.corner(9),
+		Creator.stroke("Outline", 2, 0),
 		Creator.new("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			Position = UDim2.fromScale(0.5, 0.5),
-			Size = UDim2.fromOffset(1, 14),
+			Size = UDim2.fromOffset(2, 16),
 			ZIndex = 7,
-			ThemeBind = { BackgroundColor3 = "Divider" },
+			ThemeBind = { BackgroundColor3 = "Outline" },
 		}),
 	})
 
@@ -7243,7 +7132,6 @@ end
 __modules["Window/Section"] = function(require)
 local Creator = require("Core/Creator")
 local Icons = require("Assets/Icons")
-local Animator = require("Motion/Animator")
 
 local Button = require("Elements/Button")
 local Toggle = require("Elements/Toggle")
@@ -7275,110 +7163,69 @@ function Section.new(tab, opts)
 	opts = opts or {}
 
 	local title = tostring(opts.Title or opts.Name or "")
-	local collapsible = opts.Collapsible == true
-	local collapsed = opts.Collapsed == true
+	local order = tab:_nextSectionOrder()
 
-	local root = Creator.new("Frame", {
-		Name = "Section_" .. (title ~= "" and title or "Group"),
+	-- Sleek Bento Section Card
+	local card = Creator.new("Frame", {
+		Name = "Section_" .. (title ~= "" and title or tostring(order)),
 		Size = UDim2.new(1, 0, 0, 0),
 		AutomaticSize = Enum.AutomaticSize.Y,
-		BackgroundTransparency = 1,
-		LayoutOrder = tab:_nextSectionOrder(),
+		BackgroundTransparency = 0,
+		LayoutOrder = order,
 		ZIndex = 2,
+		ThemeBind = { BackgroundColor3 = "SectionBg" },
 		Parent = tab.Scroll.Frame,
 	}, {
-		Creator.list(6, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Top),
+		Creator.corner(14),
+		Creator.stroke("Outline", 1.2, 0),
+		Creator.padding(12, 12, 12, 12),
+		Creator.list(8, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Top),
 	})
 
-	local headerBtn = nil
-	local chevronImg = nil
-	if title ~= "" then
-		headerBtn = Creator.new("TextButton", {
-			Name = "SectionHeader",
-			Size = UDim2.new(1, 0, 0, 18),
+	local showHeader = title ~= "" and not (order == 1 and string.upper(title) == string.upper(tab.Title))
+	if showHeader then
+		local headerRow = Creator.new("Frame", {
+			Name = "CardTitleRow",
+			Size = UDim2.new(1, 0, 0, 20),
 			BackgroundTransparency = 1,
-			Text = "",
-			LayoutOrder = 1,
+			LayoutOrder = 0,
 			ZIndex = 3,
-			Parent = root,
-		}, {
-			Creator.padding(0, 4, 0, 4),
+			Parent = card,
 		})
 
-		local iconOffset = 0
+		local textOffset = 0
 		if opts.Icon then
-			iconOffset = 18
+			textOffset = 22
 			Creator.new("ImageLabel", {
+				Name = "HeaderIcon",
 				AnchorPoint = Vector2.new(0, 0.5),
 				Position = UDim2.new(0, 0, 0.5, 0),
-				Size = UDim2.fromOffset(13, 13),
+				Size = UDim2.fromOffset(14, 14),
 				Image = Icons.resolve(opts.Icon) or "",
-				ZIndex = 3,
-				ThemeBind = { ImageColor3 = "SectionHeader" },
-				Parent = headerBtn,
+				ZIndex = 4,
+				ThemeBind = { ImageColor3 = "Accent" },
+				Parent = headerRow,
 			})
 		end
 
 		Creator.new("TextLabel", {
 			Name = "HeaderTitle",
-			Position = UDim2.fromOffset(iconOffset, 0),
-			Size = UDim2.new(1, -(iconOffset + 20), 1, 0),
+			Position = UDim2.fromOffset(textOffset, 0),
+			Size = UDim2.new(1, -textOffset, 1, 0),
 			Font = Enum.Font.BuilderSansBold,
-			TextSize = 11,
-			Text = string.upper(title),
-			ZIndex = 3,
+			TextSize = 13,
+			Text = title,
+			ZIndex = 4,
 			ThemeBind = { TextColor3 = "SectionHeader" },
-			Parent = headerBtn,
+			Parent = headerRow,
 		})
-
-		if collapsible then
-			chevronImg = Creator.new("ImageLabel", {
-				Name = "Chevron",
-				AnchorPoint = Vector2.new(1, 0.5),
-				Position = UDim2.new(1, 0, 0.5, 0),
-				Size = UDim2.fromOffset(13, 13),
-				Image = Icons.resolve("chevron-down") or "",
-				Rotation = collapsed and -90 or 0,
-				ZIndex = 3,
-				ThemeBind = { ImageColor3 = "SectionHeader" },
-				Parent = headerBtn,
-			})
-		end
-	end
-
-	-- Grouped iOS Settings Card container
-	local card = Creator.new("Frame", {
-		Name = "GroupCard",
-		Size = UDim2.new(1, 0, 0, 0),
-		AutomaticSize = Enum.AutomaticSize.Y,
-		BackgroundTransparency = 0,
-		Visible = not collapsed,
-		LayoutOrder = 2,
-		ZIndex = 2,
-		ThemeBind = { BackgroundColor3 = "SectionBg" },
-		Parent = root,
-	}, {
-		Creator.corner(10),
-		Creator.stroke("Border", 1, 0.2),
-		Creator.padding(4, 4, 4, 4),
-		Creator.list(2, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Top),
-	})
-
-	if collapsible and headerBtn then
-		headerBtn.Activated:Connect(function()
-			collapsed = not collapsed
-			card.Visible = not collapsed
-			if chevronImg then
-				Animator.tween(chevronImg, { Rotation = collapsed and -90 or 0 }, 0.16)
-			end
-		end)
 	end
 
 	local self = setmetatable({
 		Title = title,
 		Tab = tab,
 		Window = tab.Window,
-		Root = root,
+		Root = card,
 		Container = card,
 		_itemOrder = 0,
 	}, Section)
@@ -7500,6 +7347,7 @@ end
 
 -- [[ Module: Window/Tab ]]
 __modules["Window/Tab"] = function(require)
+local Util = require("Core/Util")
 local Scroll = require("Components/Scroll")
 local Popover = require("Components/Popover")
 local Section = require("Window/Section")
@@ -7514,15 +7362,15 @@ function Tab.new(window, opts)
 	opts = opts or {}
 
 	local title = tostring(opts.Title or opts.Name or "Tab")
-	local icon = opts.Icon or "circle"
+	local icon = opts.Icon or "layers"
 	local badge = opts.Badge
 
 	local scroll = Scroll.create({
 		Name = "Page_" .. title,
 		Parent = window.PagesContainer,
 		Visible = false,
-		Spacing = 14,
-		Padding = { Top = 14, Right = 16, Bottom = 20, Left = 16 },
+		Spacing = 10,
+		Padding = { Top = 0, Right = 2, Bottom = 12, Left = 0 },
 	})
 
 	scroll.Scrolled:Connect(function()
@@ -7539,6 +7387,35 @@ function Tab.new(window, opts)
 		_sectionOrder = 0,
 		_defaultSection = nil,
 	}, Tab)
+
+	function self:ApplyFilter(rawQuery)
+		local q = tostring(rawQuery or ""):gsub("^%s*(.-)%s*$", "%1")
+		for _, sec in ipairs(self.Sections) do
+			local anyVisible = false
+			for _, child in ipairs(sec.Container:GetChildren()) do
+				if child:IsA("GuiObject") and child.Name ~= "CardTitleRow" then
+					if q == "" then
+						child.Visible = true
+						anyVisible = true
+					else
+						local score = Util.fuzzyScore(q, child.Name)
+						if not score then
+							local t = child:FindFirstChild("Title", true)
+							if t and t:IsA("TextLabel") then
+								score = Util.fuzzyScore(q, t.Text)
+							end
+						end
+						local show = score ~= nil
+						child.Visible = show
+						if show then
+							anyVisible = true
+						end
+					end
+				end
+			end
+			sec.Root.Visible = (q == "") or anyVisible
+		end
+	end
 
 	self.SidebarEntry = window.Sidebar:AddTabButton(self, icon, badge)
 	return self
@@ -7564,7 +7441,6 @@ function Tab:_ensureDefaultSection()
 	return self._defaultSection
 end
 
--- Allow calling element methods directly on a Tab (creates/uses a headerless card section)
 local forwarded = {
 	"Button",
 	"Toggle",
@@ -7699,35 +7575,48 @@ function Notifications:Notify(opts)
 		Name = "ToastCard",
 		Position = UDim2.fromOffset(self.Corner == "BottomLeft" and -40 or 40, 0),
 		Size = UDim2.new(1, 0, 1, 0),
-		BackgroundTransparency = 0.04,
+		BackgroundTransparency = 0,
 		Text = "",
 		AutoButtonColor = false,
 		ZIndex = 262,
-		ThemeBind = { BackgroundColor3 = "PopoverBg" },
+		ThemeBind = { BackgroundColor3 = "RowBg" },
 		Parent = wrapper,
 	}, {
-		Creator.corner(10),
-		Creator.stroke("InnerStroke", 1, 0.25),
+		Creator.corner(12),
+		Creator.stroke("Outline", 1.2, 0),
 	})
 
 	Shadow.create(card, 16, 0.45, 261)
 
+	local iconBox = Creator.new("Frame", {
+		Name = "IconBox",
+		Position = UDim2.fromOffset(10, 10),
+		Size = UDim2.fromOffset(32, 32),
+		ZIndex = 263,
+		ThemeBind = { BackgroundColor3 = "SectionBg" },
+		Parent = card,
+	}, {
+		Creator.corner(8),
+		Creator.stroke("Outline", 1, 0),
+	})
+
 	Creator.new("ImageLabel", {
 		Name = "Icon",
-		Position = UDim2.fromOffset(12, 11),
-		Size = UDim2.fromOffset(16, 16),
+		AnchorPoint = Vector2.new(0.5, 0.5),
+		Position = UDim2.new(0.5, 0, 0.5, 0),
+		Size = UDim2.fromOffset(18, 18),
 		Image = Icons.resolve(opts.Icon or cfg.Icon) or "",
-		ZIndex = 263,
+		ZIndex = 264,
 		ThemeBind = { ImageColor3 = cfg.Token },
-		Parent = card,
+		Parent = iconBox,
 	})
 
 	Creator.new("TextLabel", {
 		Name = "Title",
-		Position = UDim2.fromOffset(36, 9),
-		Size = UDim2.new(1, -46, 0, 16),
+		Position = UDim2.fromOffset(50, 9),
+		Size = UDim2.new(1, -60, 0, 18),
 		Font = Enum.Font.BuilderSansBold,
-		TextSize = 13,
+		TextSize = 15,
 		Text = title,
 		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 264,
@@ -7738,9 +7627,9 @@ function Notifications:Notify(opts)
 	if content ~= "" then
 		Creator.new("TextLabel", {
 			Name = "Body",
-			Position = UDim2.fromOffset(36, 27),
-			Size = UDim2.new(1, -46, 0, math.ceil(bodyBounds.Y) + 2),
-			Font = Enum.Font.BuilderSans,
+			Position = UDim2.fromOffset(50, 27),
+			Size = UDim2.new(1, -60, 0, math.ceil(bodyBounds.Y) + 2),
+			Font = Enum.Font.BuilderSansMedium,
 			TextSize = 12,
 			Text = content,
 			TextWrapped = true,
@@ -8468,7 +8357,6 @@ __modules["Overlays/Tooltip"] = function(require)
 local Services = require("Core/Services")
 local Creator = require("Core/Creator")
 local Util = require("Core/Util")
-local Animator = require("Motion/Animator")
 
 local Tooltip = {}
 Tooltip.__index = Tooltip
@@ -8476,23 +8364,23 @@ Tooltip.__index = Tooltip
 function Tooltip.new(screenGui)
 	local pill = Creator.new("Frame", {
 		Name = "TooltipCard",
-		Size = UDim2.fromOffset(120, 26),
-		BackgroundTransparency = 0.05,
+		Size = UDim2.fromOffset(120, 28),
+		BackgroundTransparency = 0,
 		Visible = false,
 		ZIndex = 300,
 		ThemeBind = { BackgroundColor3 = "PopoverBg" },
 		Parent = screenGui,
 	}, {
-		Creator.corner(6),
-		Creator.stroke("InnerStroke", 1, 0.25),
-		Creator.padding(4, 8, 4, 8),
+		Creator.corner(8),
+		Creator.stroke("Outline", 2, 0),
+		Creator.padding(4, 10, 4, 10),
 	})
 
 	local label = Creator.new("TextLabel", {
 		Name = "Text",
 		Size = UDim2.new(1, 0, 1, 0),
-		Font = Enum.Font.BuilderSans,
-		TextSize = 12,
+		Font = Enum.Font.BuilderSansBold,
+		TextSize = 13,
 		Text = "",
 		ZIndex = 301,
 		ThemeBind = { TextColor3 = "Text" },
@@ -8507,19 +8395,34 @@ function Tooltip.new(screenGui)
 end
 
 function Tooltip:Bind(guiObj, textOrProvider)
+	if textOrProvider == nil then
+		return
+	end
+
 	guiObj.MouseEnter:Connect(function()
 		if self._hoverThread then
 			pcall(task.cancel, self._hoverThread)
 		end
 		self._hoverThread = task.delay(0.45, function()
-			local text = type(textOrProvider) == "function" and textOrProvider() or textOrProvider
+			local text = nil
+			if type(textOrProvider) == "function" then
+				local ok, res = pcall(textOrProvider)
+				if ok and type(res) == "string" then
+					text = res
+				end
+			elseif type(textOrProvider) == "string" then
+				text = textOrProvider
+			end
+
 			if not text or text == "" then
+				self.Frame.Visible = false
 				return
 			end
-			local bounds = Util.measureText(text, 12, Enum.Font.BuilderSans, 260)
-			local w = math.clamp(math.ceil(bounds.X) + 18, 48, 280)
-			local h = math.max(24, math.ceil(bounds.Y) + 10)
-			self.Label.Text = tostring(text)
+
+			local bounds = Util.measureText(text, 13, Enum.Font.BuilderSansBold, 260)
+			local w = math.clamp(math.ceil(bounds.X) + 22, 48, 280)
+			local h = math.max(26, math.ceil(bounds.Y) + 10)
+			self.Label.Text = text
 			self.Frame.Size = UDim2.fromOffset(w, h)
 
 			local mPos = Services.UserInputService:GetMouseLocation()
@@ -9819,7 +9722,6 @@ end
 
 -- [[ Module: Window/Window ]]
 __modules["Window/Window"] = function(require)
-local Services = require("Core/Services")
 local Env = require("Core/Env")
 local Maid = require("Core/Maid")
 local Creator = require("Core/Creator")
@@ -9876,17 +9778,20 @@ function Window.new(library, opts)
 	maid:Add(screenGui)
 
 	local vp = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
-	local baseW = opts.Width or 680
-	local baseH = opts.Height or 460
+	local baseW = opts.Width or 620
+	local baseH = opts.Height or 420
 	local autoScale = 1
-	if Env.IsMobile or vp.X < 740 or vp.Y < 520 then
+	if Env.IsMobile or vp.X < 700 or vp.Y < 480 then
 		autoScale = math.clamp(math.min((vp.X - 24) / baseW, (vp.Y - 24) / baseH), 0.65, 1)
 	end
+
+	local startX = math.floor(vp.X * 0.5)
+	local startY = math.floor(vp.Y * 0.5)
 
 	local root = Creator.new("Frame", {
 		Name = "WindowRoot",
 		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new(0.5, 0, 0.5, 0),
+		Position = UDim2.fromOffset(startX, startY),
 		Size = UDim2.fromOffset(baseW, baseH),
 		BackgroundTransparency = 0,
 		ClipsDescendants = false,
@@ -9894,18 +9799,17 @@ function Window.new(library, opts)
 		ThemeBind = { BackgroundColor3 = "WindowBg" },
 		Parent = screenGui,
 	}, {
-		Creator.corner(14),
-		Creator.stroke("InnerStroke", 1, 0.25),
+		Creator.corner(18),
+		Creator.stroke("InnerStroke", 1.5, 0.15),
 	})
 
 	local uiScale = Creator.new("UIScale", {
-		Scale = autoScale * 0.96,
+		Scale = autoScale * 0.94,
 		Parent = root,
 	})
 
-	Shadow.create(root, 34, 0.36, 0)
+	Shadow.create(root, 32, 0.38, 0)
 
-	-- Clipped interior shell
 	local chrome = Creator.new("Frame", {
 		Name = "Chrome",
 		Size = UDim2.new(1, 0, 1, 0),
@@ -9914,7 +9818,7 @@ function Window.new(library, opts)
 		ZIndex = 2,
 		Parent = root,
 	}, {
-		Creator.corner(14),
+		Creator.corner(18),
 	})
 
 	local overlayLayer = Creator.new("Frame", {
@@ -9927,16 +9831,14 @@ function Window.new(library, opts)
 
 	Popover.init(overlayLayer, uiScale)
 
-	local sidebarWidth = opts.SidebarWidth or opts.TabWidth or 178
-
+	-- Floating Bento Content Area (Right of the 56px Floating Capsule Dock, Below the 44px Floating Header)
 	local pagesContainer = Creator.new("Frame", {
 		Name = "PagesContainer",
-		Position = UDim2.fromOffset(sidebarWidth, 44),
-		Size = UDim2.new(1, -sidebarWidth, 1, -44),
-		BackgroundTransparency = 0,
+		Position = UDim2.fromOffset(76, 62),
+		Size = UDim2.new(1, -86, 1, -72),
+		BackgroundTransparency = 1,
 		ClipsDescendants = true,
 		ZIndex = 2,
-		ThemeBind = { BackgroundColor3 = "ContentBg" },
 		Parent = chrome,
 	})
 
@@ -9975,23 +9877,22 @@ function Window.new(library, opts)
 	self.CommandPalette = CommandPalette.new(self)
 	self.KeybindList = KeybindList.new(self, opts.ShowKeybindList == true)
 	self.Watermark = Watermark.new(self, {
-		Title = opts.WatermarkTitle or opts.Title or "Perfectus UI",
+		Title = opts.WatermarkTitle or opts.Title or "Perfectus",
 		Icon = opts.Icon,
 		Visible = opts.Watermark == true,
 	})
 
 	self.TitleBar = TitleBar.create(self, opts)
-	self.Sidebar = Sidebar.create(self, { Width = sidebarWidth })
+	self.Sidebar = Sidebar.create(self, opts)
 	self.MinimizedPill = MinimizedPill.create(self, opts)
 	self.MobileToggle = MobileToggle.create(self, opts)
 	self.ConfigManager = ConfigManager.new(self, self.ConfigFolder)
 
 	InputManager.attach(self)
 
-	-- Opening spring animation
 	Animator.spring(uiScale, "Scale", autoScale, { frequency = 16, damping = 0.82 })
 
-	if opts.LoadingScreen ~= false then
+	if opts.LoadingScreen == true then
 		LoadingScreen.play(self, opts)
 	end
 
@@ -10003,7 +9904,6 @@ function Window.new(library, opts)
 		self:SetTransparency(true)
 	end
 
-	-- Auto-append Settings tab when Window:Ready() is called or deferred if SettingsTab = true
 	self._autoSettingsTab = opts.SettingsTab == true
 	self._autoLoadConfig = opts.AutoLoadConfig == true
 	self._finalized = false
@@ -10018,7 +9918,7 @@ function Window.new(library, opts)
 end
 
 function Window:_registerTooltip(guiObj, textOrProvider)
-	if self.Tooltip then
+	if self.Tooltip and textOrProvider ~= nil then
 		self.Tooltip:Bind(guiObj, textOrProvider)
 	end
 end
@@ -10082,18 +9982,33 @@ function Window:SelectTab(tabOrIndex)
 		local isCurrent = (t == target)
 		t.Page.Visible = isCurrent
 		if isCurrent then
-			t.Page.Position = UDim2.fromOffset(0, 8)
+			t.Page.Position = UDim2.fromOffset(0, 6)
 			Animator.spring(t.Page, "Position", UDim2.fromOffset(0, 0), { frequency = 20, damping = 0.86 })
 		end
 	end
 	self.Sidebar:UpdateActive(target)
+	if self.TitleBar and self.TitleBar.SetActiveTabTitle then
+		self.TitleBar:SetActiveTabTitle(target.Title)
+	end
+end
+
+function Window:FilterActiveTab(query)
+	if self.ActiveTab and self.ActiveTab.ApplyFilter then
+		self.ActiveTab:ApplyFilter(query)
+	end
 end
 
 function Window:ToggleSidebar()
 	Popover.close()
 	local newW = self.Sidebar:SetCollapsed(not self.Sidebar:IsCollapsed())
-	Animator.spring(self.PagesContainer, "Position", UDim2.fromOffset(newW, 44), { frequency = 18, damping = 0.86 })
-	Animator.spring(self.PagesContainer, "Size", UDim2.new(1, -newW, 1, -44), { frequency = 18, damping = 0.86 })
+	local leftX = newW > 0 and (newW + 20) or 10
+	Animator.spring(self.PagesContainer, "Position", UDim2.fromOffset(leftX, 62), { frequency = 18, damping = 0.86 })
+	Animator.spring(
+		self.PagesContainer,
+		"Size",
+		UDim2.new(1, -(leftX + 10), 1, -72),
+		{ frequency = 18, damping = 0.86 }
+	)
 end
 
 function Window:MinimizeToPill(minimize)
@@ -10147,15 +10062,13 @@ function Window:SetTransparency(on)
 	self.Transparent = on == true
 	local winTrans = self.Transparent and 0.14 or 0
 	local sideTrans = self.Transparent and 0.18 or 0
-	local pageTrans = self.Transparent and 0.22 or 0
 	Animator.tween(self.Root, { BackgroundTransparency = winTrans }, 0.2)
 	Animator.tween(self.Sidebar.Frame, { BackgroundTransparency = sideTrans }, 0.2)
-	Animator.tween(self.PagesContainer, { BackgroundTransparency = pageTrans }, 0.2)
 end
 
 function Window:SetToggleKey(newKey)
 	self.ToggleKey = newKey
-	if self.TitleBar then
+	if self.TitleBar and self.TitleBar.UpdateKeyText then
 		self.TitleBar:UpdateKeyText(newKey)
 	end
 end
@@ -10171,7 +10084,7 @@ end
 function Window:PromptClose()
 	self:Dialog({
 		Title = "Close Interface",
-		Content = "Do you want to minimize to the Dynamic Island pill or unload the script completely?",
+		Content = "Minimize to the floating bar or unload the script?",
 		Buttons = {
 			{ Title = "Cancel", Style = "Secondary" },
 			{
@@ -10306,260 +10219,168 @@ end
     return __require("init")
 end)()
 
+-- Perfectus UI — Clean, Minimal Showcase Example
 -- PerfectusUI inline above
 
 local Window = PerfectusUI:CreateWindow({
 	Title = "Perfectus",
-	Subtitle = "by Perfectus",
-	Icon = "sparkles",
-	Theme = "Dark",
-	Accent = "Blue",
-	ConfigFolder = "PerfectusHub/Showcase",
+	Theme = "Obsidian",
+	Accent = "Indigo",
+	Width = 620,
+	Height = 420,
 	ToggleKey = Enum.KeyCode.RightShift,
-	LoadingScreen = true,
+	Watermark = false,
+	ShowKeybindList = false,
+	LoadingScreen = false,
 	SettingsTab = true,
 	AutoLoadConfig = false,
-	Watermark = true,
-	ShowKeybindList = true,
+	ConfigFolder = "PerfectusUI_Showcase",
 })
 
 -- ============================================================
--- Group 1: Overview & Automation
+-- Tab 1: Auto Farm
 -- ============================================================
-Window:TabGroup("Automation")
-
-local DashboardTab = Window:Tab({
-	Title = "Dashboard",
-	Icon = "layout-dashboard",
-	Badge = "NEW",
-})
-
-local TelemetrySec = DashboardTab:Section({ Title = "Live Session Telemetry", Icon = "activity" })
-local StatusStat = TelemetrySec:Stat({
-	Title = "Engine Status",
-	Icon = "shield-check",
-	Value = "Optimal (Zero Idle)",
-	ColorToken = "Success",
-})
-local CoinsStat = TelemetrySec:Stat({
-	Title = "Farming Yield / Min",
-	Icon = "coins",
-	Value = "24,850 / min",
-	ColorToken = "Accent",
-})
-local MasteryProgress = TelemetrySec:ProgressBar({
-	Title = "Season Pass Progression",
-	Icon = "award",
-	Default = 68,
-	Max = 100,
-	Suffix = "%",
-	Tooltip = "Live animated spring progress bar",
-})
-
-TelemetrySec:Button({
-	Title = "Simulate Progression Burst",
+local FarmTab = Window:Tab({
+	Title = "Auto Farm",
 	Icon = "zap",
+})
+
+local MainCard = FarmTab:Section({ Title = "Auto Farm" })
+
+MainCard:Toggle({
+	Title = "Auto Farm",
+	Flag = "AutoFarm",
+	Default = true,
+	Key = Enum.KeyCode.F,
+})
+
+MainCard:Toggle({
+	Title = "Auto Collect",
+	Flag = "AutoCollect",
+	Default = true,
+	Key = Enum.KeyCode.G,
+})
+
+MainCard:Slider({
+	Title = "Attack Interval",
+	Flag = "AttackInterval",
+	Min = 0.01,
+	Max = 1.00,
+	Step = 0.01,
+	Default = 0.05,
+	Suffix = "s",
+})
+
+MainCard:Dropdown({
+	Title = "Target Zone",
+	Flag = "TargetZone",
+	Options = {
+		"Starter Meadow",
+		"Crystal Cavern",
+		"Obsidian Citadel",
+		"Celestial Sanctum",
+		"Abyssal Rift",
+	},
+	Default = "Starter Meadow",
+})
+
+MainCard:Segmented({
+	Title = "Farm Mode",
+	Flag = "FarmMode",
+	Options = { "Legit", "Fast", "Instant" },
+	Default = "Fast",
+})
+
+local ActionsCard = FarmTab:Section({ Title = "Quick Actions", Icon = "sparkles" })
+
+ActionsCard:Button({
+	Title = "Claim All Rewards",
 	Style = "Primary",
-	ButtonText = "Boost +15%",
 	Callback = function()
-		local nextVal = (MasteryProgress:Get() + 15) % 105
-		MasteryProgress:Set(math.min(100, nextVal))
-		CoinsStat:Set(string.format("%d,400 / min", math.random(25, 89)))
 		Window:Notify({
-			Title = "Telemetry Updated",
-			Content = "Progression bar updated to " .. tostring(math.floor(MasteryProgress:Get())) .. "%.",
+			Title = "Rewards Claimed",
+			Content = "Collected all pending chests and daily rewards.",
 			Type = "Success",
 			Duration = 3,
 		})
 	end,
 })
 
-local QuickActionsSec =
-	DashboardTab:Section({ Title = "System Controls & Dialogs", Icon = "command", Collapsible = true })
-
-QuickActionsSec:Button({
-	Title = "Open Spotlight Command Palette",
-	Icon = "search",
-	ButtonText = "Open ⌘K",
-	Tooltip = "Fuzzy search every control across all tabs (or press Ctrl+K)",
-	Callback = function()
-		Window.CommandPalette:Show()
-	end,
-})
-
-QuickActionsSec:Button({
-	Title = "Trigger Modal Confirmation Dialog",
-	Icon = "message-square",
-	ButtonText = "Open Modal",
-	Callback = function()
-		Window:Dialog({
-			Title = "Reset Session Metrics?",
-			Content = "This will reset your session counters and recalibrate the farming rate estimator.",
-			Buttons = {
-				{ Title = "Cancel", Style = "Secondary" },
-				{
-					Title = "Recalibrate",
-					Style = "Primary",
-					Callback = function()
-						CoinsStat:Set("0 / min")
-						MasteryProgress:Set(0)
-						Window:Notify({
-							Title = "Session Reset",
-							Content = "Telemetry counters have been reset.",
-							Type = "Info",
-						})
-					end,
-				},
-			},
-		})
-	end,
-})
-
-QuickActionsSec:Button({
-	Title = "Two-Step Destructive Action",
-	Icon = "alert-triangle",
-	Style = "Destructive",
-	ButtonText = "Purge Cache",
-	Confirm = true,
-	Tooltip = "Requires a second click within 2.5s to confirm",
+ActionsCard:Button({
+	Title = "Reset Session Stats",
 	Callback = function()
 		Window:Notify({
-			Title = "Cache Purged",
-			Content = "Temporary session cache cleared cleanly.",
-			Type = "Warning",
+			Title = "Stats Reset",
+			Content = "Session counters have been cleared.",
+			Type = "Info",
+			Duration = 3,
 		})
 	end,
 })
 
 -- ============================================================
--- Tab 2: Farming & Combat (Interactive Controls)
+-- Tab 2: Combat & Upgrades
 -- ============================================================
-local MainTab = Window:Tab({
-	Title = "Main & Farm",
-	Icon = "sprout",
-})
-
-local AutoSec = MainTab:Section({ Title = "Automated Farming", Icon = "zap" })
-
-AutoSec:Toggle({
-	Title = "Auto Farm Nearest Target",
-	Flag = "AutoFarm",
+local CombatTab = Window:Tab({
+	Title = "Combat",
 	Icon = "swords",
-	Default = true,
-	Key = Enum.KeyCode.F,
-	Tooltip = "Right-click any row for context actions (Reset, Copy Value, Copy Flag)",
-	Callback = function(state)
-		StatusStat:Set(state and "Farming Active" or "Idle")
-	end,
 })
 
-AutoSec:Toggle({
-	Title = "Auto Collect Orbs & Loot",
-	Flag = "AutoCollect",
-	Icon = "sparkles",
-	Default = false,
-	Key = Enum.KeyCode.G,
-})
+local CombatCard = CombatTab:Section({ Title = "Combat" })
 
-AutoSec:Checkbox({
-	Title = "Prioritize Boss Entities",
-	Flag = "PrioritizeBosses",
-	Icon = "crown",
+CombatCard:Checkbox({
+	Title = "Auto Upgrade Equipped",
+	Flag = "AutoUpgrade",
 	Default = true,
 })
 
-AutoSec:Segmented({
-	Title = "Attack Mode",
-	Flag = "AttackMode",
-	Icon = "crosshair",
-	Options = { "Legit", "Fast", "Instant" },
-	Default = "Fast",
-})
-
-AutoSec:Dropdown({
-	Title = "Target World Zone",
-	Flag = "TargetZone",
-	Icon = "map-pin",
-	Options = {
-		"Zone 1 - Sakura Grove",
-		"Zone 2 - Cyber District",
-		"Zone 3 - Obsidian Citadel",
-		"Zone 4 - Astral Sanctum",
-		"Zone 5 - Void Singularity",
-		"Zone 6 - Celestial Spire",
-		"Zone 7 - Chrono Vault",
-		"Zone 8 - Sovereign Throne",
-	},
-	Default = "Zone 2 - Cyber District",
-	Search = true,
-})
-
-AutoSec:Dropdown({
-	Title = "Auto-Upgrade Attributes",
-	Flag = "UpgradeStats",
-	Icon = "trending-up",
+CombatCard:Dropdown({
+	Title = "Rarity Filter",
+	Flag = "RarityFilter",
 	Multi = true,
-	Options = { "Damage", "Critical Chance", "Attack Speed", "Luck Multiplier", "Movement Speed" },
-	Default = { "Damage", "Luck Multiplier" },
+	Options = { "Common", "Rare", "Epic", "Legendary", "Mythic", "Secret" },
+	Default = { "Legendary", "Mythic", "Secret" },
 })
 
-local TuningSec = MainTab:Section({ Title = "Precision Tuning", Icon = "sliders" })
-
-TuningSec:Slider({
-	Title = "Engagement Radius",
-	Flag = "EngageRadius",
-	Icon = "radar",
-	Min = 10,
-	Max = 250,
+CombatCard:RangeSlider({
+	Title = "Target Distance",
+	Flag = "TargetRange",
+	Min = 5,
+	Max = 150,
 	Step = 5,
-	Default = 85,
-	Suffix = " studs",
+	Default = { 15, 85 },
+	Suffix = "m",
 })
 
-TuningSec:RangeSlider({
-	Title = "Reaction Delay Window",
-	Flag = "ReactionWindow",
-	Icon = "clock",
-	Min = 10,
-	Max = 500,
-	Step = 10,
-	Default = { 60, 180 },
-	Suffix = " ms",
-})
-
-TuningSec:Stepper({
-	Title = "Multi-Target Batch Limit",
-	Flag = "BatchLimit",
-	Icon = "layers",
+CombatCard:Stepper({
+	Title = "Burst Count",
+	Flag = "BurstCount",
 	Min = 1,
-	Max = 20,
+	Max = 16,
 	Step = 1,
 	Default = 4,
-	Suffix = " mobs",
+	Suffix = "x",
 })
 
 -- ============================================================
--- Group 2: Character & Visuals
+-- Tab 3: Player
 -- ============================================================
-Window:TabGroup("Character & Visuals")
-
 local PlayerTab = Window:Tab({
 	Title = "Player",
 	Icon = "user",
 })
 
-local MoveSec = PlayerTab:Section({ Title = "Movement & Physics", Icon = "wind" })
+local MoveCard = PlayerTab:Section({ Title = "Player" })
 
-MoveSec:Toggle({
-	Title = "WalkSpeed Override",
+MoveCard:Toggle({
+	Title = "WalkSpeed",
 	Flag = "WalkSpeedToggle",
-	Icon = "footprints",
 	Default = false,
 	Key = Enum.KeyCode.V,
 })
 
-MoveSec:Slider({
-	Title = "WalkSpeed Value",
+MoveCard:Slider({
+	Title = "Speed",
 	Flag = "WalkSpeedVal",
 	Min = 16,
 	Max = 350,
@@ -10568,16 +10389,15 @@ MoveSec:Slider({
 	Suffix = " ws",
 })
 
-MoveSec:Toggle({
-	Title = "Omnidirectional Flight",
+MoveCard:Toggle({
+	Title = "Flight",
 	Flag = "FlyToggle",
-	Icon = "plane",
 	Default = false,
 	Key = Enum.KeyCode.X,
 })
 
-MoveSec:Slider({
-	Title = "Flight Velocity",
+MoveCard:Slider({
+	Title = "Flight Speed",
 	Flag = "FlySpeedVal",
 	Min = 20,
 	Max = 400,
@@ -10586,165 +10406,87 @@ MoveSec:Slider({
 	Suffix = " studs/s",
 })
 
-local UtilSec = PlayerTab:Section({ Title = "Player Utilities", Icon = "compass" })
-
-UtilSec:Dropdown({
-	Title = "Spectate / Teleport to Player",
+MoveCard:Dropdown({
+	Title = "Teleport to Player",
 	Flag = "TargetPlayer",
-	Icon = "users",
 	Options = "Players",
 	AllowNone = true,
 })
 
-UtilSec:Keybind({
-	Title = "Quick Dash Hotkey",
-	Flag = "DashKey",
-	Icon = "zap",
-	Default = Enum.KeyCode.Q,
-	Mode = "Hold",
-})
-
+-- ============================================================
+-- Tab 4: Visuals
+-- ============================================================
 local VisualsTab = Window:Tab({
-	Title = "Visuals & ESP",
+	Title = "Visuals",
 	Icon = "eye",
 })
 
-local EspSec = VisualsTab:Section({ Title = "Highlight & ESP Customization", Icon = "palette" })
+local EspCard = VisualsTab:Section({ Title = "Visuals" })
 
-EspSec:Toggle({
-	Title = "Enable Entity Highlights",
+EspCard:Toggle({
+	Title = "ESP Highlights",
 	Flag = "EspEnabled",
-	Icon = "eye",
 	Default = true,
 })
 
-EspSec:ColorPicker({
-	Title = "Ally Highlight Color",
+EspCard:ColorPicker({
+	Title = "Ally Color",
 	Flag = "AllyColor",
-	Icon = "shield",
-	Default = Color3.fromRGB(48, 209, 88),
+	Default = Color3.fromRGB(16, 185, 129),
 })
 
-EspSec:ColorPicker({
-	Title = "Enemy Highlight Color",
+EspCard:ColorPicker({
+	Title = "Enemy Color",
 	Flag = "EnemyColor",
-	Icon = "flame",
-	Default = Color3.fromRGB(255, 69, 58),
+	Default = Color3.fromRGB(244, 63, 94),
 })
 
-EspSec:RadioGroup({
-	Title = "Tracer Origin Mode",
+EspCard:RadioGroup({
+	Title = "Tracer Origin",
 	Flag = "TracerOrigin",
-	Options = { "Screen Bottom", "Screen Center (Crosshair)", "Mouse Cursor" },
-	Default = "Screen Center (Crosshair)",
+	Options = { "Bottom", "Center", "Mouse" },
+	Default = "Center",
 })
 
 -- ============================================================
--- Group 3: Components & Developer Reference
+-- Tab 5: Elements
 -- ============================================================
-Window:TabGroup("Developer")
-
-local ShowcaseTab = Window:Tab({
-	Title = "All Elements",
+local ElementsTab = Window:Tab({
+	Title = "Elements",
 	Icon = "box",
 })
 
-local InputSec = ShowcaseTab:Section({ Title = "Text Inputs & Validation", Icon = "type" })
+local ExtraCard = ElementsTab:Section({ Title = "Elements" })
 
-InputSec:Input({
-	Title = "Webhook Notification URL",
+ExtraCard:Input({
+	Title = "Webhook URL",
 	Flag = "WebhookUrl",
-	Icon = "webhook",
 	Placeholder = "https://discord.com/api/webhooks/...",
 	Finished = true,
 })
 
-InputSec:Input({
-	Title = "Numeric Threshold Filter",
-	Flag = "NumericThreshold",
-	Icon = "hash",
-	Numeric = true,
-	Default = "1500",
+ExtraCard:Keybind({
+	Title = "Dash Hotkey",
+	Flag = "DashKey",
+	Default = Enum.KeyCode.Q,
+	Mode = "Hold",
 })
 
-local LockedDemo = InputSec:Toggle({
-	Title = "Premium Experimental Feature",
-	Icon = "lock",
-	Default = false,
-})
-LockedDemo:Lock("Unlock via toggle below")
-
-InputSec:Toggle({
-	Title = "Unlock Experimental Control Above",
-	Icon = "unlock",
-	Default = false,
-	Callback = function(unlocked)
-		if unlocked then
-			LockedDemo:Unlock()
-		else
-			LockedDemo:Lock("Unlock via toggle below")
-		end
-	end,
+ExtraCard:Stat({
+	Title = "Session Rate",
+	Value = "1,240 / hr",
 })
 
-local RichSec = ShowcaseTab:Section({ Title = "Rich Display Elements", Icon = "code-2" })
-
-RichSec:Label({
-	Title = "Single-column iOS grouped card layout with zero text overlap.",
-	Icon = "check-circle-2",
-})
-
-RichSec:Divider("Documentation & Code")
-
-RichSec:Paragraph({
-	Title = "Architecture Overview",
-	Content = "Every control reserves its exact right-hand slot width and truncates or wraps text cleanly on the left. Popovers render in a dedicated top-level layer that automatically flips upward near screen edges.",
-	Icon = "info",
-})
-
-RichSec:CodeBlock({
-	Title = "Quick Start Usage",
-	Code = [[local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/perfectusmim1/PerfectusUI/main/dist/PerfectusUI.lua"))()
-local Window = UI:CreateWindow({ Title = "Perfectus", Subtitle = "by Perfectus" })
-local Main = Window:Tab({ Title = "Main", Icon = "home" })
-Main:Section("Farming"):Toggle({ Title = "Auto Farm", Flag = "AutoFarm", Key = "F" })]],
-})
-
-local ToastSec = ShowcaseTab:Section({ Title = "Notification Showcase", Icon = "bell" })
-
-ToastSec:Button({
-	Title = "Send Info / Success / Warning / Error Toasts",
-	Icon = "bell-ring",
-	Style = "Primary",
-	ButtonText = "Send All",
-	Callback = function()
-		Window:Notify({
-			Title = "Information",
-			Content = "Spotlight search is available via Ctrl+K.",
-			Type = "Info",
-			Duration = 3.5,
-		})
-		task.wait(0.15)
-		Window:Notify({
-			Title = "Configuration Saved",
-			Content = "Your profile was synced to disk.",
-			Type = "Success",
-			Duration = 4,
-		})
-		task.wait(0.15)
-		Window:Notify({
-			Title = "High Ping Detected",
-			Content = "Server latency exceeded 180ms.",
-			Type = "Warning",
-			Duration = 4.5,
-		})
-	end,
+ExtraCard:ProgressBar({
+	Title = "Wave Progress",
+	Default = 72,
+	Status = "18 / 25",
 })
 
 Window:Ready()
 Window:Notify({
-	Title = "Perfectus UI Ready",
-	Content = "Press RightShift to toggle menu or Ctrl+K for Spotlight search.",
+	Title = "Perfectus Ready",
+	Content = "Press RightShift to toggle menu.",
 	Type = "Success",
-	Duration = 4.5,
+	Duration = 3.5,
 })

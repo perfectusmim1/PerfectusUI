@@ -42,19 +42,19 @@ function Stepper.create(section, opts)
 		Name = "Capsule",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(68, 26),
+		Size = UDim2.fromOffset(68, 28),
 		ZIndex = 6,
 		ThemeBind = { BackgroundColor3 = "ControlBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.corner(9),
+		Creator.stroke("Outline", 2, 0),
 		Creator.new("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5),
 			Position = UDim2.fromScale(0.5, 0.5),
-			Size = UDim2.fromOffset(1, 14),
+			Size = UDim2.fromOffset(2, 16),
 			ZIndex = 7,
-			ThemeBind = { BackgroundColor3 = "Divider" },
+			ThemeBind = { BackgroundColor3 = "Outline" },
 		}),
 	})
 

@@ -10,38 +10,48 @@ function RowBase.create(section, opts)
 	local rightWidth = opts.RightWidth or 120
 	local minHeight = opts.MinHeight or 42
 	local clickable = opts.Clickable == true
+	local framed = opts.Framed ~= false
 
 	local rowClass = clickable and "TextButton" or "Frame"
 	local rowProps = {
 		Name = opts.Name or ("Row_" .. tostring(opts.Title or "Item")),
 		Size = UDim2.new(1, 0, 0, minHeight),
 		AutomaticSize = Enum.AutomaticSize.Y,
-		BackgroundTransparency = 0,
+		BackgroundTransparency = framed and 0 or 1,
 		LayoutOrder = section:_nextOrder(),
 		ZIndex = 3,
-		ThemeBind = { BackgroundColor3 = "RowBg" },
 		Parent = section.Container,
 	}
+	if framed then
+		rowProps.ThemeBind = { BackgroundColor3 = "RowBg" }
+	end
 	if clickable then
 		rowProps.Text = ""
 		rowProps.AutoButtonColor = false
 	end
 
-	local row = Creator.new(rowClass, rowProps, {
-		Creator.corner(8),
+	local children = {
+		Creator.corner(10),
 		Creator.padding(8, 12, 8, 12),
 		Creator.new("UISizeConstraint", {
 			MinSize = Vector2.new(0, minHeight),
 		}),
-	})
+	}
+	if framed then
+		table.insert(children, Creator.stroke("Outline", 1, 0))
+	end
 
-	Creator.bindInteractive(row, {
-		NormalToken = "RowBg",
-		HoverToken = "RowHover",
-	})
+	local row = Creator.new(rowClass, rowProps, children)
+
+	if framed then
+		Creator.bindInteractive(row, {
+			NormalToken = "RowBg",
+			HoverToken = "RowHover",
+		})
+	end
 
 	local hasIcon = opts.Icon ~= nil and opts.Icon ~= ""
-	local iconOffset = hasIcon and 26 or 0
+	local iconOffset = hasIcon and 24 or 0
 
 	local iconImage = nil
 	if hasIcon then
@@ -122,7 +132,6 @@ function RowBase.create(section, opts)
 		})
 	end
 
-	-- Lock overlay
 	local locked = false
 	local lockReason = nil
 	local lockOverlay = nil
@@ -178,17 +187,17 @@ function RowBase.create(section, opts)
 				Name = "LockOverlay",
 				Size = UDim2.new(1, 0, 1, 0),
 				Position = UDim2.fromOffset(0, 0),
-				BackgroundTransparency = 0.32,
+				BackgroundTransparency = 0.28,
 				Text = "",
 				AutoButtonColor = false,
 				ZIndex = 12,
 				ThemeBind = { BackgroundColor3 = "SectionBg" },
 				Parent = row,
 			}, {
-				Creator.corner(8),
+				Creator.corner(10),
 				Creator.new("ImageLabel", {
 					AnchorPoint = Vector2.new(1, 0.5),
-					Position = UDim2.new(1, -6, 0.5, 0),
+					Position = UDim2.new(1, -10, 0.5, 0),
 					Size = UDim2.fromOffset(14, 14),
 					Image = Icons.resolve("lock") or "",
 					ZIndex = 13,
@@ -218,24 +227,9 @@ function RowBase.create(section, opts)
 		end
 	end
 
-	-- Register Tooltip & ContextMenu & CommandPalette entry if Window provides hooks
 	if section.Window then
-		if opts.Tooltip and section.Window._registerTooltip then
-			section.Window:_registerTooltip(row, function()
-				if locked and lockReason then
-					return tostring(opts.Tooltip) .. " (" .. lockReason .. ")"
-				end
-				return tostring(opts.Tooltip)
-			end)
-		else
-			if section.Window._registerTooltip then
-				section.Window:_registerTooltip(row, function()
-					if locked and lockReason then
-						return lockReason
-					end
-					return nil
-				end)
-			end
+		if type(opts.Tooltip) == "string" and opts.Tooltip ~= "" and section.Window._registerTooltip then
+			section.Window:_registerTooltip(row, opts.Tooltip)
 		end
 		if section.Window._registerContextMenu then
 			section.Window:_registerContextMenu(row, control)

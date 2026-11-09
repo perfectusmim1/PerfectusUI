@@ -39,16 +39,16 @@ function Input.create(section, opts)
 		Name = "InputContainer",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(175, 28),
+		Size = UDim2.fromOffset(175, 30),
 		BackgroundColor3 = ThemeManager:Get("InputBg"),
 		ZIndex = 6,
 		ThemeBind = { BackgroundColor3 = "InputBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
+		Creator.corner(10),
 	})
 
-	local stroke = Creator.stroke("Border", 1, 0.35, container)
+	local stroke = Creator.stroke("Outline", 2, 0, container)
 
 	local clearBtn = Creator.new("ImageButton", {
 		Name = "ClearButton",

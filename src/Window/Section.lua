@@ -1,6 +1,5 @@
 local Creator = require("Core/Creator")
 local Icons = require("Assets/Icons")
-local Animator = require("Motion/Animator")
 
 local Button = require("Elements/Button")
 local Toggle = require("Elements/Toggle")
@@ -32,110 +31,69 @@ function Section.new(tab, opts)
 	opts = opts or {}
 
 	local title = tostring(opts.Title or opts.Name or "")
-	local collapsible = opts.Collapsible == true
-	local collapsed = opts.Collapsed == true
+	local order = tab:_nextSectionOrder()
 
-	local root = Creator.new("Frame", {
-		Name = "Section_" .. (title ~= "" and title or "Group"),
+	-- Sleek Bento Section Card
+	local card = Creator.new("Frame", {
+		Name = "Section_" .. (title ~= "" and title or tostring(order)),
 		Size = UDim2.new(1, 0, 0, 0),
 		AutomaticSize = Enum.AutomaticSize.Y,
-		BackgroundTransparency = 1,
-		LayoutOrder = tab:_nextSectionOrder(),
+		BackgroundTransparency = 0,
+		LayoutOrder = order,
 		ZIndex = 2,
+		ThemeBind = { BackgroundColor3 = "SectionBg" },
 		Parent = tab.Scroll.Frame,
 	}, {
-		Creator.list(6, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Top),
+		Creator.corner(14),
+		Creator.stroke("Outline", 1.2, 0),
+		Creator.padding(12, 12, 12, 12),
+		Creator.list(8, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Top),
 	})
 
-	local headerBtn = nil
-	local chevronImg = nil
-	if title ~= "" then
-		headerBtn = Creator.new("TextButton", {
-			Name = "SectionHeader",
-			Size = UDim2.new(1, 0, 0, 18),
+	local showHeader = title ~= "" and not (order == 1 and string.upper(title) == string.upper(tab.Title))
+	if showHeader then
+		local headerRow = Creator.new("Frame", {
+			Name = "CardTitleRow",
+			Size = UDim2.new(1, 0, 0, 20),
 			BackgroundTransparency = 1,
-			Text = "",
-			LayoutOrder = 1,
+			LayoutOrder = 0,
 			ZIndex = 3,
-			Parent = root,
-		}, {
-			Creator.padding(0, 4, 0, 4),
+			Parent = card,
 		})
 
-		local iconOffset = 0
+		local textOffset = 0
 		if opts.Icon then
-			iconOffset = 18
+			textOffset = 22
 			Creator.new("ImageLabel", {
+				Name = "HeaderIcon",
 				AnchorPoint = Vector2.new(0, 0.5),
 				Position = UDim2.new(0, 0, 0.5, 0),
-				Size = UDim2.fromOffset(13, 13),
+				Size = UDim2.fromOffset(14, 14),
 				Image = Icons.resolve(opts.Icon) or "",
-				ZIndex = 3,
-				ThemeBind = { ImageColor3 = "SectionHeader" },
-				Parent = headerBtn,
+				ZIndex = 4,
+				ThemeBind = { ImageColor3 = "Accent" },
+				Parent = headerRow,
 			})
 		end
 
 		Creator.new("TextLabel", {
 			Name = "HeaderTitle",
-			Position = UDim2.fromOffset(iconOffset, 0),
-			Size = UDim2.new(1, -(iconOffset + 20), 1, 0),
+			Position = UDim2.fromOffset(textOffset, 0),
+			Size = UDim2.new(1, -textOffset, 1, 0),
 			Font = Enum.Font.BuilderSansBold,
-			TextSize = 11,
-			Text = string.upper(title),
-			ZIndex = 3,
+			TextSize = 13,
+			Text = title,
+			ZIndex = 4,
 			ThemeBind = { TextColor3 = "SectionHeader" },
-			Parent = headerBtn,
+			Parent = headerRow,
 		})
-
-		if collapsible then
-			chevronImg = Creator.new("ImageLabel", {
-				Name = "Chevron",
-				AnchorPoint = Vector2.new(1, 0.5),
-				Position = UDim2.new(1, 0, 0.5, 0),
-				Size = UDim2.fromOffset(13, 13),
-				Image = Icons.resolve("chevron-down") or "",
-				Rotation = collapsed and -90 or 0,
-				ZIndex = 3,
-				ThemeBind = { ImageColor3 = "SectionHeader" },
-				Parent = headerBtn,
-			})
-		end
-	end
-
-	-- Grouped iOS Settings Card container
-	local card = Creator.new("Frame", {
-		Name = "GroupCard",
-		Size = UDim2.new(1, 0, 0, 0),
-		AutomaticSize = Enum.AutomaticSize.Y,
-		BackgroundTransparency = 0,
-		Visible = not collapsed,
-		LayoutOrder = 2,
-		ZIndex = 2,
-		ThemeBind = { BackgroundColor3 = "SectionBg" },
-		Parent = root,
-	}, {
-		Creator.corner(10),
-		Creator.stroke("Border", 1, 0.2),
-		Creator.padding(4, 4, 4, 4),
-		Creator.list(2, Enum.FillDirection.Vertical, Enum.HorizontalAlignment.Left, Enum.VerticalAlignment.Top),
-	})
-
-	if collapsible and headerBtn then
-		headerBtn.Activated:Connect(function()
-			collapsed = not collapsed
-			card.Visible = not collapsed
-			if chevronImg then
-				Animator.tween(chevronImg, { Rotation = collapsed and -90 or 0 }, 0.16)
-			end
-		end)
 	end
 
 	local self = setmetatable({
 		Title = title,
 		Tab = tab,
 		Window = tab.Window,
-		Root = root,
+		Root = card,
 		Container = card,
 		_itemOrder = 0,
 	}, Section)

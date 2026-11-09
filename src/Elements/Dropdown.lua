@@ -62,7 +62,7 @@ function Dropdown.create(section, opts)
 		Name = "TriggerButton",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(165, 28),
+		Size = UDim2.fromOffset(160, 28),
 		BackgroundColor3 = ThemeManager:Get("ControlBg"),
 		Text = "",
 		AutoButtonColor = false,
@@ -70,15 +70,15 @@ function Dropdown.create(section, opts)
 		ThemeBind = { BackgroundColor3 = "ControlBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.corner(8),
+		Creator.stroke("Outline", 1, 0),
 	})
 
 	local valueLabel = Creator.new("TextLabel", {
 		Name = "SelectedText",
 		Position = UDim2.fromOffset(10, 0),
 		Size = UDim2.new(1, -30, 1, 0),
-		Font = Enum.Font.BuilderSans,
+		Font = Enum.Font.BuilderSansMedium,
 		TextSize = 13,
 		TextTruncate = Enum.TextTruncate.AtEnd,
 		ZIndex = 7,

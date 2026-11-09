@@ -39,12 +39,11 @@ function Toggle.create(section, opts)
 		Tooltip = opts.Tooltip,
 		Flag = opts.Flag or opts.Id,
 		Default = state,
-		RightWidth = hasKeybindSlot and 112 or 54,
+		RightWidth = hasKeybindSlot and 106 or 50,
 		Clickable = true,
 	})
 	control.Kind = "Toggle"
 
-	-- Optional inline keybind badge
 	local keyBtn = nil
 	local listeningKey = false
 	if hasKeybindSlot then
@@ -52,23 +51,24 @@ function Toggle.create(section, opts)
 			Name = "KeyChip",
 			AnchorPoint = Vector2.new(1, 0.5),
 			Position = UDim2.new(1, -52, 0.5, 0),
-			Size = UDim2.fromOffset(50, 22),
-			Font = Enum.Font.RobotoMono,
-			TextSize = 11,
+			Size = UDim2.fromOffset(44, 24),
+			Font = Enum.Font.BuilderSansBold,
+			TextSize = 12,
 			Text = Util.formatKeyName(currentKey),
+			TextXAlignment = Enum.TextXAlignment.Center,
 			ZIndex = 6,
 			ThemeBind = {
 				BackgroundColor3 = "ControlBg",
-				TextColor3 = "TextSecondary",
+				TextColor3 = "Text",
 			},
 			Parent = control.RightSlot,
 		}, {
 			Creator.corner(6),
-			Creator.stroke("Border", 1, 0.3),
+			Creator.stroke("Outline", 1, 0),
 		})
 	end
 
-	-- iOS Switch track (44 x 24)
+	-- Sleek Switch Track (44 x 24)
 	local track = Creator.new("Frame", {
 		Name = "SwitchTrack",
 		AnchorPoint = Vector2.new(1, 0.5),
@@ -79,14 +79,14 @@ function Toggle.create(section, opts)
 		Parent = control.RightSlot,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.5),
+		Creator.stroke("Outline", 1, 0),
 	})
 
 	local knob = Creator.new("Frame", {
 		Name = "Knob",
 		AnchorPoint = Vector2.new(0, 0.5),
-		Position = state and UDim2.new(1, -22, 0.5, 0) or UDim2.new(0, 2, 0.5, 0),
-		Size = UDim2.fromOffset(20, 20),
+		Position = state and UDim2.new(1, -21, 0.5, 0) or UDim2.new(0, 3, 0.5, 0),
+		Size = UDim2.fromOffset(18, 18),
 		ZIndex = 7,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
@@ -96,44 +96,20 @@ function Toggle.create(section, opts)
 
 	local function syncVisuals(animate)
 		local targetColor = ThemeManager:Get(state and "Accent" or "SwitchOff")
-		local targetPos = state and UDim2.new(1, -22, 0.5, 0) or UDim2.new(0, 2, 0.5, 0)
+		local targetPos = state and UDim2.new(1, -21, 0.5, 0) or UDim2.new(0, 3, 0.5, 0)
 		if animate ~= false then
 			Animator.tween(track, { BackgroundColor3 = targetColor }, 0.18)
 			Animator.spring(knob, "Position", targetPos, { frequency = 18, damping = 0.82 })
-			Animator.spring(knob, "Size", UDim2.fromOffset(20, 20), { frequency = 18, damping = 0.82 })
+			Animator.spring(knob, "Size", UDim2.fromOffset(18, 18), { frequency = 18, damping = 0.82 })
 		else
 			track.BackgroundColor3 = targetColor
 			knob.Position = targetPos
-			knob.Size = UDim2.fromOffset(20, 20)
+			knob.Size = UDim2.fromOffset(18, 18)
 		end
 	end
 
 	ThemeManager.Changed:Connect(function()
 		syncVisuals(true)
-	end)
-
-	-- iOS press stretch effect
-	control.Row.InputBegan:Connect(function(input)
-		if control:IsLocked() then
-			return
-		end
-		if
-			input.UserInputType == Enum.UserInputType.MouseButton1
-			or input.UserInputType == Enum.UserInputType.Touch
-		then
-			local stretchPos = state and UDim2.new(1, -26, 0.5, 0) or UDim2.new(0, 2, 0.5, 0)
-			Animator.spring(knob, "Size", UDim2.fromOffset(24, 20), { frequency = 22, damping = 0.85 })
-			Animator.spring(knob, "Position", stretchPos, { frequency = 22, damping = 0.85 })
-		end
-	end)
-
-	control.Row.InputEnded:Connect(function(input)
-		if
-			input.UserInputType == Enum.UserInputType.MouseButton1
-			or input.UserInputType == Enum.UserInputType.Touch
-		then
-			syncVisuals(true)
-		end
 	end)
 
 	local function setValue(newVal, silent)
@@ -198,7 +174,6 @@ function Toggle.create(section, opts)
 			end
 			listeningKey = true
 			keyBtn.Text = "..."
-			Animator.tween(keyBtn, { TextColor3 = ThemeManager:Get("Accent") }, 0.12)
 		end)
 
 		Services.UserInputService.InputBegan:Connect(function(input, processed)
@@ -208,7 +183,6 @@ function Toggle.create(section, opts)
 			if listeningKey then
 				if input.UserInputType == Enum.UserInputType.Keyboard then
 					listeningKey = false
-					Animator.tween(keyBtn, { TextColor3 = ThemeManager:Get("TextSecondary") }, 0.12)
 					if input.KeyCode == Enum.KeyCode.Escape or input.KeyCode == Enum.KeyCode.Backspace then
 						control:SetKey(nil)
 					else

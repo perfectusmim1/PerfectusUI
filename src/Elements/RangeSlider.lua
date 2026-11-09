@@ -43,7 +43,7 @@ function RangeSlider.create(section, opts)
 		Name = "RangeTrack",
 		AnchorPoint = Vector2.new(0, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(trackWidth, 6),
+		Size = UDim2.fromOffset(trackWidth, 12),
 		BackgroundColor3 = ThemeManager:Get("ControlBg"),
 		Text = "",
 		AutoButtonColor = false,
@@ -51,7 +51,7 @@ function RangeSlider.create(section, opts)
 		Parent = control.RightSlot,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.4),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local fill = Creator.new("Frame", {
@@ -70,26 +70,26 @@ function RangeSlider.create(section, opts)
 		Name = "KnobLow",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(14, 14),
+		Size = UDim2.fromOffset(18, 18),
 		ZIndex = 8,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local knobHigh = Creator.new("Frame", {
 		Name = "KnobHigh",
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.new(0, 0, 0.5, 0),
-		Size = UDim2.fromOffset(14, 14),
+		Size = UDim2.fromOffset(18, 18),
 		ZIndex = 8,
 		ThemeBind = { BackgroundColor3 = "Knob" },
 		Parent = track,
 	}, {
 		Creator.corner(UDim.new(1, 0)),
-		Creator.stroke("Border", 1, 0.3),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local valueLabel = Creator.new("TextLabel", {

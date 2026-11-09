@@ -1,82 +1,77 @@
 local Creator = require("Core/Creator")
+local Signal = require("Core/Signal")
 local Util = require("Core/Util")
 local ThemeManager = require("Theme/ThemeManager")
 local Animator = require("Motion/Animator")
-local Icons = require("Assets/Icons")
-local RowBase = require("Components/RowBase")
 
 local Button = {}
 
 function Button.create(section, opts)
 	opts = opts or {}
 	local style = opts.Style or "Secondary" -- "Primary" | "Secondary" | "Destructive"
-	local buttonLabel = opts.ButtonText or (style == "Destructive" and "Run" or "Execute")
+	local title = tostring(opts.Title or opts.ButtonText or "Button")
 	local confirmRequired = opts.Confirm == true
 
-	local control = RowBase.create(section, {
-		Title = opts.Title or "Button",
-		Description = opts.Description,
-		Icon = opts.Icon,
-		Tooltip = opts.Tooltip,
-		RightWidth = 104,
-		Clickable = true,
-		TitleColorToken = style == "Destructive" and "Error" or "Text",
-		IconColorToken = style == "Destructive" and "Error" or "TextSecondary",
-	})
-	control.Kind = "Button"
-
-	local bgToken = "ControlBg"
+	local bgToken = "RowBg"
+	local hoverToken = "RowHover"
 	local textToken = "Text"
 	if style == "Primary" then
 		bgToken = "Accent"
+		hoverToken = "AccentHover"
 		textToken = "OnAccent"
 	elseif style == "Destructive" then
 		bgToken = "Error"
+		hoverToken = "Error"
 		textToken = "OnAccent"
 	end
 
-	local actionPill = Creator.new("Frame", {
-		Name = "ActionPill",
-		AnchorPoint = Vector2.new(1, 0.5),
-		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(88, 26),
-		ZIndex = 6,
+	local btn = Creator.new("TextButton", {
+		Name = "Row_" .. title,
+		Size = UDim2.new(1, 0, 0, 38),
+		BackgroundTransparency = 0,
+		Text = "",
+		AutoButtonColor = false,
+		LayoutOrder = section:_nextOrder(),
+		ZIndex = 4,
 		ThemeBind = { BackgroundColor3 = bgToken },
-		Parent = control.RightSlot,
+		Parent = section.Container,
 	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, style == "Secondary" and 0.25 or 0.7),
+		Creator.corner(10),
+		Creator.stroke("Outline", 1, 0),
 		Creator.new("UIScale", { Scale = 1 }),
 	})
 
-	local pillLabel = Creator.new("TextLabel", {
-		Name = "PillText",
-		Size = UDim2.new(1, -22, 1, 0),
-		Position = UDim2.fromOffset(8, 0),
-		Font = Enum.Font.BuilderSansMedium,
-		TextSize = 12,
-		Text = buttonLabel,
+	local titleLabel = Creator.new("TextLabel", {
+		Name = "Title",
+		Size = UDim2.new(1, -24, 1, 0),
+		Position = UDim2.fromOffset(12, 0),
+		Font = Enum.Font.BuilderSansBold,
+		TextSize = 14,
+		Text = title,
 		TextXAlignment = Enum.TextXAlignment.Center,
-		ZIndex = 7,
+		TextYAlignment = Enum.TextYAlignment.Center,
+		ZIndex = 5,
 		ThemeBind = { TextColor3 = textToken },
-		Parent = actionPill,
+		Parent = btn,
 	})
 
-	local chevron = Creator.new("ImageLabel", {
-		Name = "Arrow",
-		AnchorPoint = Vector2.new(1, 0.5),
-		Position = UDim2.new(1, -6, 0.5, 0),
-		Size = UDim2.fromOffset(12, 12),
-		Image = Icons.resolve(opts.ActionIcon or "chevron-right") or "",
-		ZIndex = 7,
-		ThemeBind = { ImageColor3 = textToken },
-		Parent = actionPill,
-	})
-
-	local scaleInst = actionPill:FindFirstChildOfClass("UIScale")
+	local scaleInst = btn:FindFirstChildOfClass("UIScale")
 	local awaitingConfirm = false
 	local confirmResetThread = nil
 	local running = false
+	local locked = false
+
+	btn.MouseEnter:Connect(function()
+		if not awaitingConfirm then
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get(hoverToken) }, 0.12)
+		end
+	end)
+
+	btn.MouseLeave:Connect(function()
+		if not awaitingConfirm then
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get(bgToken) }, 0.14)
+		end
+	end)
 
 	local function resetConfirm()
 		awaitingConfirm = false
@@ -84,18 +79,60 @@ function Button.create(section, opts)
 			pcall(task.cancel, confirmResetThread)
 			confirmResetThread = nil
 		end
-		pillLabel.Text = buttonLabel
-		Animator.tween(actionPill, { BackgroundColor3 = ThemeManager:Get(bgToken) }, 0.16)
+		titleLabel.Text = title
+		Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get(bgToken) }, 0.16)
 	end
 
+	local control = {
+		Kind = "Button",
+		Row = btn,
+		TitleLabel = titleLabel,
+		Section = section,
+		Window = section.Window,
+		Title = title,
+		Changed = Signal.new(),
+		IsLocked = function()
+			return locked
+		end,
+		Lock = function()
+			locked = true
+		end,
+		Unlock = function()
+			locked = false
+		end,
+		Highlight = function()
+			Animator.pulseHighlight(btn)
+		end,
+		SetTitle = function(self, newTitle)
+			self.Title = tostring(newTitle or "")
+			title = self.Title
+			titleLabel.Text = title
+		end,
+		SetButtonText = function(self, newTitle)
+			self:SetTitle(newTitle)
+		end,
+		SetVisible = function(_, v)
+			btn.Visible = v == true
+		end,
+		OnChanged = function(self, fn)
+			return self.Changed:Connect(fn)
+		end,
+		Destroy = function(self)
+			self.Changed:Destroy()
+			if btn and btn.Parent then
+				btn:Destroy()
+			end
+		end,
+	}
+
 	local function trigger()
-		if control:IsLocked() or running then
+		if locked or running then
 			return
 		end
 		if confirmRequired and not awaitingConfirm then
 			awaitingConfirm = true
-			pillLabel.Text = "Confirm?"
-			Animator.tween(actionPill, { BackgroundColor3 = ThemeManager:Get("Warning") }, 0.14)
+			titleLabel.Text = "Confirm: " .. title
+			Animator.tween(btn, { BackgroundColor3 = ThemeManager:Get("Warning") }, 0.14)
 			confirmResetThread = task.delay(2.5, resetConfirm)
 			return
 		end
@@ -104,10 +141,10 @@ function Button.create(section, opts)
 		end
 
 		if scaleInst then
-			Animator.spring(scaleInst, "Scale", 0.94, { frequency = 22, damping = 0.8 })
-			task.delay(0.09, function()
+			Animator.spring(scaleInst, "Scale", 0.97, { frequency = 24, damping = 0.8 })
+			task.delay(0.08, function()
 				if scaleInst.Parent then
-					Animator.spring(scaleInst, "Scale", 1, { frequency = 16, damping = 0.78 })
+					Animator.spring(scaleInst, "Scale", 1, { frequency = 18, damping = 0.78 })
 				end
 			end)
 		end
@@ -122,17 +159,11 @@ function Button.create(section, opts)
 		end
 	end
 
-	control.Row.Activated:Connect(trigger)
+	btn.Activated:Connect(trigger)
+	control.Fire = trigger
 
-	function control:Fire()
-		trigger()
-	end
-
-	function control:SetButtonText(text)
-		buttonLabel = tostring(text or "Execute")
-		if not awaitingConfirm then
-			pillLabel.Text = buttonLabel
-		end
+	if section.Window and section.Window._registerSearchable then
+		section.Window:_registerSearchable(control, section)
 	end
 
 	return control

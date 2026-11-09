@@ -1,4 +1,3 @@
-local Services = require("Core/Services")
 local Env = require("Core/Env")
 local Maid = require("Core/Maid")
 local Creator = require("Core/Creator")
@@ -55,17 +54,20 @@ function Window.new(library, opts)
 	maid:Add(screenGui)
 
 	local vp = workspace.CurrentCamera and workspace.CurrentCamera.ViewportSize or Vector2.new(1280, 720)
-	local baseW = opts.Width or 680
-	local baseH = opts.Height or 460
+	local baseW = opts.Width or 620
+	local baseH = opts.Height or 420
 	local autoScale = 1
-	if Env.IsMobile or vp.X < 740 or vp.Y < 520 then
+	if Env.IsMobile or vp.X < 700 or vp.Y < 480 then
 		autoScale = math.clamp(math.min((vp.X - 24) / baseW, (vp.Y - 24) / baseH), 0.65, 1)
 	end
+
+	local startX = math.floor(vp.X * 0.5)
+	local startY = math.floor(vp.Y * 0.5)
 
 	local root = Creator.new("Frame", {
 		Name = "WindowRoot",
 		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new(0.5, 0, 0.5, 0),
+		Position = UDim2.fromOffset(startX, startY),
 		Size = UDim2.fromOffset(baseW, baseH),
 		BackgroundTransparency = 0,
 		ClipsDescendants = false,
@@ -73,18 +75,17 @@ function Window.new(library, opts)
 		ThemeBind = { BackgroundColor3 = "WindowBg" },
 		Parent = screenGui,
 	}, {
-		Creator.corner(14),
-		Creator.stroke("InnerStroke", 1, 0.25),
+		Creator.corner(18),
+		Creator.stroke("InnerStroke", 1.5, 0.15),
 	})
 
 	local uiScale = Creator.new("UIScale", {
-		Scale = autoScale * 0.96,
+		Scale = autoScale * 0.94,
 		Parent = root,
 	})
 
-	Shadow.create(root, 34, 0.36, 0)
+	Shadow.create(root, 32, 0.38, 0)
 
-	-- Clipped interior shell
 	local chrome = Creator.new("Frame", {
 		Name = "Chrome",
 		Size = UDim2.new(1, 0, 1, 0),
@@ -93,7 +94,7 @@ function Window.new(library, opts)
 		ZIndex = 2,
 		Parent = root,
 	}, {
-		Creator.corner(14),
+		Creator.corner(18),
 	})
 
 	local overlayLayer = Creator.new("Frame", {
@@ -106,16 +107,14 @@ function Window.new(library, opts)
 
 	Popover.init(overlayLayer, uiScale)
 
-	local sidebarWidth = opts.SidebarWidth or opts.TabWidth or 178
-
+	-- Floating Bento Content Area (Right of the 56px Floating Capsule Dock, Below the 44px Floating Header)
 	local pagesContainer = Creator.new("Frame", {
 		Name = "PagesContainer",
-		Position = UDim2.fromOffset(sidebarWidth, 44),
-		Size = UDim2.new(1, -sidebarWidth, 1, -44),
-		BackgroundTransparency = 0,
+		Position = UDim2.fromOffset(76, 62),
+		Size = UDim2.new(1, -86, 1, -72),
+		BackgroundTransparency = 1,
 		ClipsDescendants = true,
 		ZIndex = 2,
-		ThemeBind = { BackgroundColor3 = "ContentBg" },
 		Parent = chrome,
 	})
 
@@ -154,23 +153,22 @@ function Window.new(library, opts)
 	self.CommandPalette = CommandPalette.new(self)
 	self.KeybindList = KeybindList.new(self, opts.ShowKeybindList == true)
 	self.Watermark = Watermark.new(self, {
-		Title = opts.WatermarkTitle or opts.Title or "Perfectus UI",
+		Title = opts.WatermarkTitle or opts.Title or "Perfectus",
 		Icon = opts.Icon,
 		Visible = opts.Watermark == true,
 	})
 
 	self.TitleBar = TitleBar.create(self, opts)
-	self.Sidebar = Sidebar.create(self, { Width = sidebarWidth })
+	self.Sidebar = Sidebar.create(self, opts)
 	self.MinimizedPill = MinimizedPill.create(self, opts)
 	self.MobileToggle = MobileToggle.create(self, opts)
 	self.ConfigManager = ConfigManager.new(self, self.ConfigFolder)
 
 	InputManager.attach(self)
 
-	-- Opening spring animation
 	Animator.spring(uiScale, "Scale", autoScale, { frequency = 16, damping = 0.82 })
 
-	if opts.LoadingScreen ~= false then
+	if opts.LoadingScreen == true then
 		LoadingScreen.play(self, opts)
 	end
 
@@ -182,7 +180,6 @@ function Window.new(library, opts)
 		self:SetTransparency(true)
 	end
 
-	-- Auto-append Settings tab when Window:Ready() is called or deferred if SettingsTab = true
 	self._autoSettingsTab = opts.SettingsTab == true
 	self._autoLoadConfig = opts.AutoLoadConfig == true
 	self._finalized = false
@@ -197,7 +194,7 @@ function Window.new(library, opts)
 end
 
 function Window:_registerTooltip(guiObj, textOrProvider)
-	if self.Tooltip then
+	if self.Tooltip and textOrProvider ~= nil then
 		self.Tooltip:Bind(guiObj, textOrProvider)
 	end
 end
@@ -261,18 +258,33 @@ function Window:SelectTab(tabOrIndex)
 		local isCurrent = (t == target)
 		t.Page.Visible = isCurrent
 		if isCurrent then
-			t.Page.Position = UDim2.fromOffset(0, 8)
+			t.Page.Position = UDim2.fromOffset(0, 6)
 			Animator.spring(t.Page, "Position", UDim2.fromOffset(0, 0), { frequency = 20, damping = 0.86 })
 		end
 	end
 	self.Sidebar:UpdateActive(target)
+	if self.TitleBar and self.TitleBar.SetActiveTabTitle then
+		self.TitleBar:SetActiveTabTitle(target.Title)
+	end
+end
+
+function Window:FilterActiveTab(query)
+	if self.ActiveTab and self.ActiveTab.ApplyFilter then
+		self.ActiveTab:ApplyFilter(query)
+	end
 end
 
 function Window:ToggleSidebar()
 	Popover.close()
 	local newW = self.Sidebar:SetCollapsed(not self.Sidebar:IsCollapsed())
-	Animator.spring(self.PagesContainer, "Position", UDim2.fromOffset(newW, 44), { frequency = 18, damping = 0.86 })
-	Animator.spring(self.PagesContainer, "Size", UDim2.new(1, -newW, 1, -44), { frequency = 18, damping = 0.86 })
+	local leftX = newW > 0 and (newW + 20) or 10
+	Animator.spring(self.PagesContainer, "Position", UDim2.fromOffset(leftX, 62), { frequency = 18, damping = 0.86 })
+	Animator.spring(
+		self.PagesContainer,
+		"Size",
+		UDim2.new(1, -(leftX + 10), 1, -72),
+		{ frequency = 18, damping = 0.86 }
+	)
 end
 
 function Window:MinimizeToPill(minimize)
@@ -326,15 +338,13 @@ function Window:SetTransparency(on)
 	self.Transparent = on == true
 	local winTrans = self.Transparent and 0.14 or 0
 	local sideTrans = self.Transparent and 0.18 or 0
-	local pageTrans = self.Transparent and 0.22 or 0
 	Animator.tween(self.Root, { BackgroundTransparency = winTrans }, 0.2)
 	Animator.tween(self.Sidebar.Frame, { BackgroundTransparency = sideTrans }, 0.2)
-	Animator.tween(self.PagesContainer, { BackgroundTransparency = pageTrans }, 0.2)
 end
 
 function Window:SetToggleKey(newKey)
 	self.ToggleKey = newKey
-	if self.TitleBar then
+	if self.TitleBar and self.TitleBar.UpdateKeyText then
 		self.TitleBar:UpdateKeyText(newKey)
 	end
 end
@@ -350,7 +360,7 @@ end
 function Window:PromptClose()
 	self:Dialog({
 		Title = "Close Interface",
-		Content = "Do you want to minimize to the Dynamic Island pill or unload the script completely?",
+		Content = "Minimize to the floating bar or unload the script?",
 		Buttons = {
 			{ Title = "Cancel", Style = "Secondary" },
 			{

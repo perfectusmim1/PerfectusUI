@@ -27,13 +27,13 @@ function Checkbox.create(section, opts)
 		Name = "CheckFrame",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(22, 22),
+		Size = UDim2.fromOffset(24, 24),
 		BackgroundColor3 = ThemeManager:Get(state and "Accent" or "ControlBg"),
 		ZIndex = 6,
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.35),
+		Creator.corner(8),
+		Creator.stroke("Outline", 2, 0),
 	})
 
 	local icon = Creator.new("ImageLabel", {

@@ -27,13 +27,13 @@ function Segmented.create(section, opts)
 		Name = "SegmentTrack",
 		AnchorPoint = Vector2.new(1, 0.5),
 		Position = UDim2.new(1, 0, 0.5, 0),
-		Size = UDim2.fromOffset(192, 28),
+		Size = UDim2.fromOffset(186, 28),
 		ZIndex = 6,
 		ThemeBind = { BackgroundColor3 = "InputBg" },
 		Parent = control.RightSlot,
 	}, {
-		Creator.corner(7),
-		Creator.stroke("Border", 1, 0.35),
+		Creator.corner(8),
+		Creator.stroke("Outline", 1, 0),
 		Creator.padding(2, 2, 2, 2),
 	})
 
@@ -41,11 +41,10 @@ function Segmented.create(section, opts)
 		Name = "Thumb",
 		Size = UDim2.new(1 / #options, 0, 1, 0),
 		ZIndex = 7,
-		ThemeBind = { BackgroundColor3 = "ControlBg" },
+		ThemeBind = { BackgroundColor3 = "Accent" },
 		Parent = track,
 	}, {
 		Creator.corner(6),
-		Creator.stroke("Border", 1, 0.3),
 	})
 
 	local btnHolder = Creator.new("Frame", {
@@ -81,7 +80,7 @@ function Segmented.create(section, opts)
 		for i, btn in ipairs(buttons) do
 			local isCurrent = (i == activeIndex)
 			btn.Font = isCurrent and Enum.Font.BuilderSansBold or Enum.Font.BuilderSansMedium
-			btn.TextColor3 = ThemeManager:Get(isCurrent and "Text" or "TextSecondary")
+			btn.TextColor3 = ThemeManager:Get(isCurrent and "OnAccent" or "TextSecondary")
 		end
 	end
 
@@ -121,8 +120,9 @@ function Segmented.create(section, opts)
 				Size = UDim2.new(1 / n, 0, 1, 0),
 				BackgroundTransparency = 1,
 				Font = Enum.Font.BuilderSansMedium,
-				TextSize = 11,
+				TextSize = 13,
 				Text = label,
+				TextXAlignment = Enum.TextXAlignment.Center,
 				TextTruncate = Enum.TextTruncate.AtEnd,
 				ZIndex = 9,
 				Parent = btnHolder,
